@@ -14,6 +14,10 @@ OverSub reads the text in a game on screen, translates it with AI, shows the tra
 
 [Tiếng Việt](README.md) · English
 
+<img src="Docs/images/en/choose.png" width="820" alt="OverSub play mode screen">
+
+<sub>The play mode screen when a capture card is connected. The device name and picture change to match your PC.</sub>
+
 </div>
 
 This repository holds only the installer and the documentation. The source code of OverSub for Windows is not published. The Mac version is at [imhillxtz/oversub-mac](https://github.com/imhillxtz/oversub-mac).
@@ -65,7 +69,7 @@ The console outputs to the TV through a capture card, and the Windows PC sits ne
 
 - Windows 11 on an x64 PC: a desktop, laptop, 2-in-1 or handheld. Windows 10 version 2004 or later can install it, but it hasn't been tested there.
 - A Gemini or Groq API key for translation. Both have free tiers; see Adding translation keys.
-- Python 3.13 or 3.12 and the `vieneu` package for the Vietnamese voice. The installer doesn't include them; see Vietnamese voice. Without them OverSub still translates and shows text, it just doesn't read aloud.
+- Python 3.12 and the `vieneu` package for the Vietnamese voice. The installer doesn't include them; see Vietnamese voice. Without them OverSub still translates and shows text, it just doesn't read aloud.
 - The two capture card modes need a webcam-class (UVC) capture card with a 1080p MJPEG stream. OverSub has been tested with a Hagibis capture card.
 - The Windows text recognition pack for the game's language. English is usually installed already; for other languages the app tells you to add it under Settings → Time & language → Language & region. On Windows 11, if Snipping Tool is installed, OverSub uses its text reader (OneOCR), which handles small text better.
 
@@ -94,6 +98,8 @@ OverSub doesn't update itself yet. To be notified about new versions, click Watc
 3. Paste the key into Gemini keys or Groq keys and click Add. The app tests the key first and adds it only if it works.
 4. Click Save.
 
+<img src="Docs/images/en/settings-keys.png" width="680" alt="The Translation tab in OverSub Settings">
+
 | Service | Notes |
 |---|---|
 | Gemini | The best translations among the free options. Limits apply per Google Cloud project, so several keys from one project share the same limit. |
@@ -103,20 +109,20 @@ Adding both gives you a fallback. If the AI translation hasn't arrived after 1.5
 
 ## Vietnamese voice
 
-The Vietnamese voice uses [VieNeu-TTS](https://github.com/pnnbao97/VieNeu-TTS) (Apache 2.0 license), which runs on the PC through Python. Set it up once as follows; you need an internet connection:
+The Vietnamese voice uses [VieNeu-TTS](https://github.com/pnnbao97/VieNeu-TTS) (Apache 2.0 license), which runs on the PC through Python. Set it up once as follows; you need an internet connection and about 1 GB of free space for the Python packages and the voice model:
 
-1. Open Terminal (right-click Start → Terminal) and install Python 3.13:
+1. Open Terminal (right-click Start → Terminal) and install Python 3.12:
 
    ```powershell
-   winget install -e --id Python.Python.3.13 --scope user
+   winget install -e --id Python.Python.3.12 --scope user
    ```
 
-   If you download it from [python.org](https://www.python.org/downloads/windows/) yourself, pick the "Windows installer (64-bit)" of Python 3.13 or 3.12 and install it with the default options. Python from the Microsoft Store doesn't work.
+   If you download it from [python.org](https://www.python.org/downloads/windows/) yourself, pick the "Windows installer (64-bit)" of Python 3.12 and install it with the default options. Python from the Microsoft Store doesn't work.
 
 2. Install the voice package:
 
    ```powershell
-   & "$env:LOCALAPPDATA\Programs\Python\Python313\python.exe" -m pip install vieneu
+   & "$env:LOCALAPPDATA\Programs\Python\Python312\python.exe" -m pip install vieneu
    ```
 
 3. Open OverSub again. The first time, VieNeu downloads its voice model from Hugging Face, so it takes longer; after that the voice is ready within a few seconds.

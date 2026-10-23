@@ -14,6 +14,10 @@ OverSub đọc chữ trong game trên màn hình, dịch bằng AI rồi hiện 
 
 Tiếng Việt · [English](README.en.md)
 
+<img src="Docs/images/vi/choose.png" width="820" alt="Màn chọn cách chơi của OverSub">
+
+<sub>Màn chọn cách chơi khi có capture card. Tên và hình máy đổi theo máy bạn đang dùng.</sub>
+
 </div>
 
 Kho này chỉ chứa bộ cài và tài liệu. Mã nguồn của OverSub cho Windows không được công khai. Bản cho Mac ở [imhillxtz/oversub-mac](https://github.com/imhillxtz/oversub-mac).
@@ -65,7 +69,7 @@ Máy console xuất hình ra TV qua capture card, còn máy Windows đặt cạn
 
 - Windows 11 trên máy x64: PC để bàn, laptop, máy 2 trong 1 hay máy chơi game cầm tay. Windows 10 bản 2004 trở lên cài được nhưng chưa được thử.
 - Key API của Gemini hoặc Groq để dịch. Cả hai đều có gói miễn phí, xem mục Thêm key dịch.
-- Python 3.13 hoặc 3.12 và gói `vieneu` cho giọng đọc tiếng Việt. Bộ cài không kèm phần này; cách cài ở mục Giọng đọc tiếng Việt. Chưa cài thì app vẫn dịch và hiện chữ, chỉ không đọc.
+- Python 3.12 và gói `vieneu` cho giọng đọc tiếng Việt. Bộ cài không kèm phần này; cách cài ở mục Giọng đọc tiếng Việt. Chưa cài thì app vẫn dịch và hiện chữ, chỉ không đọc.
 - Hai cách chơi qua capture card cần một capture card kiểu webcam (UVC) có luồng MJPEG 1080p. OverSub được thử với capture card Hagibis.
 - Gói đọc chữ của Windows cho ngôn ngữ trong game. Tiếng Anh thường có sẵn; với ngôn ngữ khác, app sẽ nhắc cài ở Settings → Time & language → Language & region. Trên Windows 11, nếu máy có Snipping Tool, OverSub tự dùng bộ đọc chữ của Snipping Tool (OneOCR) để đọc chính xác hơn với chữ nhỏ.
 
@@ -94,6 +98,8 @@ OverSub chưa tự cập nhật. Để nhận thông báo khi có bản mới, b
 3. Dán key vào ô Key Gemini hoặc Key Groq, bấm Thêm. App thử key trước và chỉ thêm khi key dùng được.
 4. Bấm Lưu.
 
+<img src="Docs/images/vi/settings-keys.png" width="680" alt="Tab Dịch vụ dịch trong Cài đặt của OverSub">
+
 | Dịch vụ | Ghi chú |
 |---|---|
 | Gemini | Dịch hay nhất trong nhóm miễn phí. Hạn mức tính theo dự án Google Cloud, nên nhiều key cùng một dự án dùng chung hạn mức. |
@@ -103,20 +109,20 @@ Nên thêm cả hai để dự phòng. Nếu bản AI chưa về sau 1,5 giây, 
 
 ## Giọng đọc tiếng Việt
 
-Giọng Việt dùng [VieNeu-TTS](https://github.com/pnnbao97/VieNeu-TTS) (giấy phép Apache 2.0), chạy trên máy qua Python. Cài một lần như sau, cần mạng:
+Giọng Việt dùng [VieNeu-TTS](https://github.com/pnnbao97/VieNeu-TTS) (giấy phép Apache 2.0), chạy trên máy qua Python. Cài một lần như sau, cần mạng và khoảng 1 GB dung lượng trống cho gói Python và model giọng:
 
-1. Mở Terminal (chuột phải nút Start → Terminal) và cài Python 3.13:
+1. Mở Terminal (chuột phải nút Start → Terminal) và cài Python 3.12:
 
    ```powershell
-   winget install -e --id Python.Python.3.13 --scope user
+   winget install -e --id Python.Python.3.12 --scope user
    ```
 
-   Nếu tự tải ở [python.org](https://www.python.org/downloads/windows/), hãy chọn bản "Windows installer (64-bit)" của Python 3.13 hoặc 3.12 và cài với lựa chọn mặc định. Python cài từ Microsoft Store không dùng được.
+   Nếu tự tải ở [python.org](https://www.python.org/downloads/windows/), hãy chọn bản "Windows installer (64-bit)" của Python 3.12 và cài với lựa chọn mặc định. Python cài từ Microsoft Store không dùng được.
 
 2. Cài gói giọng đọc:
 
    ```powershell
-   & "$env:LOCALAPPDATA\Programs\Python\Python313\python.exe" -m pip install vieneu
+   & "$env:LOCALAPPDATA\Programs\Python\Python312\python.exe" -m pip install vieneu
    ```
 
 3. Mở lại OverSub. Lần đầu, VieNeu tải model giọng từ Hugging Face nên cần chờ lâu hơn; những lần sau giọng sẵn sàng sau vài giây.
