@@ -1,0 +1,67 @@
+OverSub for Windows
+Copyright (c) 2026 imhillxtz. All rights reserved.
+
+This repository holds the documentation and the official installers of
+OverSub for Windows. The source code is not published. OverSub is free to
+use, but it is not released under an open-source license.
+
+You MAY, without asking:
+  - download the official, unmodified installers published on this
+    repository's Releases page and use OverSub free of charge for personal
+    use;
+  - link to this repository or to its Releases page.
+
+You MAY NOT, without prior written permission from the copyright holder:
+  - copy, re-upload, redistribute, sell, rent or sublicense the installers or
+    the installed program, in whole or in part, or bundle them with another
+    product;
+  - modify, decompile, disassemble or reverse engineer the program, except
+    to the extent that applicable law expressly permits it;
+  - use the OverSub name, icon or mascot for another product or service.
+
+To request permission, open an Issue on this repository.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+COPYRIGHT HOLDER BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER
+IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN
+CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+
+The installer includes third-party components (the .NET runtime, Vortice,
+SharpGen and FlashCap) under their own open-source licenses, listed in
+THIRD-PARTY-NOTICES.txt in the installation folder. Game titles and
+trademarks mentioned in this repository belong to their respective owners.
+Third-party services (Google, Groq and others) are used under their own
+terms.
+
+----------------------------------------------------------------------------
+
+Bản quyền (c) 2026 imhillxtz. Bảo lưu mọi quyền.
+
+Kho này chứa tài liệu và các bộ cài chính thức của OverSub cho Windows. Mã
+nguồn không được công khai. OverSub được dùng miễn phí nhưng không phải phần
+mềm mã nguồn mở; phạm vi sử dụng được quy định như sau.
+
+Bạn được phép, không cần xin phép trước:
+  - tải các bộ cài chính thức ở trang Releases của kho này, giữ nguyên không
+    chỉnh sửa, và dùng OverSub miễn phí cho mục đích cá nhân;
+  - dẫn liên kết tới kho này hoặc trang Releases của kho.
+
+Các việc sau cần có sự đồng ý bằng văn bản của tác giả (người giữ bản
+quyền):
+  - sao chép, tải lên nơi khác, phân phối lại, bán, cho thuê hoặc cấp phép
+    lại bộ cài hay chương trình đã cài, toàn bộ hay một phần, hoặc đóng gói
+    chung với sản phẩm khác;
+  - sửa đổi, dịch ngược, phân tích ngược chương trình, trừ trường hợp pháp
+    luật cho phép rõ ràng;
+  - dùng tên, biểu tượng hay linh vật của OverSub cho sản phẩm hoặc dịch vụ
+    khác.
+
+Để xin phép, vui lòng mở một Issue trên kho này.
+
+Phần mềm được cung cấp "nguyên trạng", không kèm bất kỳ bảo đảm nào. Bộ cài
+có kèm thành phần của bên thứ ba (runtime .NET, Vortice, SharpGen và
+FlashCap) theo giấy phép mã nguồn mở riêng của từng thành phần, liệt kê
+trong tệp THIRD-PARTY-NOTICES.txt ở thư mục cài đặt. Nếu có khác biệt giữa
+hai bản, bản tiếng Anh ở trên là bản có hiệu lực.
