@@ -99,7 +99,7 @@ Bộ cài đã kèm .NET, nên không cần cài .NET riêng.
 
 1. Vào trang [Releases](https://github.com/imhillxtz/oversub-windows/releases), tải tệp `OverSub-Setup-x.y.z.exe` ở mục Assets.
 2. Mở tệp vừa tải. Bộ cài chưa có chữ ký số nên Windows SmartScreen sẽ hiện "Windows protected your PC". Bấm More info, kiểm tra tên tệp là `OverSub-Setup-x.y.z.exe`, rồi bấm Run anyway. Nếu Windows của bạn dùng tiếng Việt, các nút này hiện bằng tiếng Việt, ở cùng vị trí. Trình duyệt cũng có thể báo tệp "không thường được tải về"; chọn Giữ lại (Keep).
-3. Làm theo các bước của bộ cài. OverSub được cài cho tài khoản Windows của bạn vào `%LOCALAPPDATA%\Programs\OverSub`, không cần quyền quản trị, và có lối tắt trong Start menu.
+3. Làm theo các bước của bộ cài (giao diện có tiếng Việt và tiếng Anh, tự chọn theo ngôn ngữ Windows). OverSub được cài cho tài khoản Windows của bạn vào `%LOCALAPPDATA%\Programs\OverSub`, không cần quyền quản trị, và có lối tắt trong Start menu. Khi mở OverSub lần hai trong lúc app đang chạy (ví dụ mở từ Armoury Crate và từ Start menu), cửa sổ đang chạy sẽ hiện lên và bản thứ hai tự thoát để hai bản không tranh capture card và giọng đọc.
 
 ### Kiểm tra mã SHA-256
 
@@ -113,7 +113,11 @@ So kết quả với nội dung tệp `OverSub-Setup-x.y.z.exe.sha256` trên tra
 
 ### Cập nhật
 
-OverSub chưa tự cập nhật. Để nhận thông báo khi có bản mới, bấm Watch → Custom → Releases ở đầu trang kho này. Để cập nhật, tải và chạy bộ cài của bản mới; cài đặt, hồ sơ game, trí nhớ dịch và key đã nhập đều được giữ nguyên.
+OverSub tự kiểm tra bản mới trên trang Releases của kho này 10 giây sau khi mở app rồi 6 giờ một lần. Khi có bản mới, cửa sổ chính hiện thông báo nổi kèm nút Xem. Bấm Xem để mở cửa sổ liệt kê thay đổi của mọi bản kể từ bản bạn đang dùng, với ba nút Cập nhật, Để sau và Bỏ qua bản này. Khi chọn Cập nhật, app tải bộ cài về, kiểm tra chữ ký số của tác giả khớp với khoá công khai nhúng trong app rồi chạy bộ cài im lặng; xong xuôi OverSub tự đóng rồi mở lại. Cài đặt, key, hồ sơ game, trí nhớ dịch và giọng đọc đều giữ nguyên.
+
+Ở Cài đặt → Chung, bạn có thể bật hoặc tắt công tắc Tự kiểm tra bản mới (mặc định bật), bật công tắc Cài bản mới khi thoát OverSub (mặc định tắt; khi bật, bản mới tải sẵn rồi cài lúc bạn thoát app) hoặc bấm Kiểm tra cập nhật bất cứ lúc nào.
+
+Bạn vẫn có thể tự tải bộ cài mới trên trang Releases và chạy đè lên bản đang có (bấm Watch → Custom → Releases ở đầu trang kho này nếu muốn nhận thông báo từ GitHub). Các bản từ 0.10.18 trở về trước chưa có tự cập nhật, nên cần tải và cài bản mới bằng tay một lần để những bản sau tự cập nhật.
 
 ## Bắt đầu trong 5 phút
 
@@ -251,7 +255,7 @@ Bấm nút Lịch sử trên cửa sổ chính (hoặc trên thanh nút của m�
 | Groq | Tốc độ phản hồi rất nhanh. Đóng vai trò dự phòng tức thì khi Gemini bận, trả lời chậm quá 2,5 giây hoặc hết lượt. |
 | Google Dịch (tạm) | Không cần key. Khi chưa có key nào, OverSub dịch bằng Google Dịch và dòng trạng thái ở cửa sổ chính báo rõ "Chưa có key dịch nên đang dùng Google Dịch". Khi bật ô Hiện bản Google Dịch trong lúc chờ AI, nếu bản AI chưa về sau 1,5 giây thì câu thoại hiện tạm bản Google Dịch rồi tự thay bằng bản AI khi có (giọng đọc vẫn chỉ đọc bản AI). Khi mọi dịch vụ AI đều lỗi hoặc hết lượt, OverSub dùng bản Google Dịch để việc chơi không bị đứt quãng. |
 
-Bạn nên thêm cả key Gemini và key Groq để dự phòng cho nhau. Danh sách key đã lưu có chấm màu và dòng trạng thái của từng key: đang hoạt động kèm số câu đã dịch hôm nay, tạm nghỉ vì hết lượt kèm lúc dùng lại được, hoặc lỗi lần gần nhất. Khi tất cả các key đang tạm nghỉ vì chạm giới hạn lượt theo phút, câu thoại sẽ tự chờ vài giây tới khi key mở lại thay vì bỏ sót câu, và Dịch màn hình tự nhường lượt key cho câu thoại.
+Bạn nên thêm cả key Gemini và key Groq để dự phòng cho nhau. Ở Cài đặt → Dịch vụ dịch còn có khối thu gọn Dịch vụ dịch khác (không bắt buộc) để thêm key của Cerebras, Mistral và OpenRouter (đều có gói miễn phí, mỗi dịch vụ có nút Lấy key, ô nhập key và nút Thêm) làm dự phòng khi Gemini và Groq hết lượt. Danh sách key đã lưu có chấm màu và dòng trạng thái của từng key: đang hoạt động kèm số câu đã dịch hôm nay, tạm nghỉ vì hết lượt kèm lúc dùng lại được, hoặc lỗi lần gần nhất. Khi tất cả các key đang tạm nghỉ vì chạm giới hạn lượt theo phút, câu thoại sẽ tự chờ vài giây tới khi key mở lại thay vì bỏ sót câu, và Dịch màn hình tự nhường lượt key cho câu thoại.
 
 Ở mục Ưu tiên khi dịch phụ đề, bạn có thể chọn:
 
@@ -305,13 +309,15 @@ Khi dịch, chỉ có văn bản chữ đọc được mới gửi tới dịch 
 - Các dịch vụ AI mà bạn đã thêm key (Gemini, Groq) nhận câu cần dịch, một vài câu thoại trước đó làm ngữ cảnh, danh sách xưng hô của các nhân vật liên quan và thể loại game.
 - Google Dịch nhận chữ khi cần hiện bản dịch tạm trong lúc chờ AI hoặc khi dùng chế độ Tức thì của Dịch màn hình. Nếu bạn không muốn gửi chữ tới Google Dịch, hãy vào Cài đặt → Dịch vụ dịch, tắt ô Hiện bản Google Dịch trong lúc chờ AI và đặt Tốc độ Dịch màn hình thành Chờ bản AI.
 
-OverSub không có máy chủ riêng, không thu thập dữ liệu sử dụng và không có quảng cáo. Toàn bộ dữ liệu trên máy nằm trong thư mục `%LOCALAPPDATA%\OverSub`:
+OverSub không có máy chủ riêng, không thu thập dữ liệu sử dụng và không có quảng cáo. Việc kiểm tra cập nhật chỉ hỏi trang Releases công khai của kho này trên GitHub một lần mỗi đợt, không gửi thông tin gì về người dùng; bộ cài tải về phải có chữ ký số của tác giả khớp với khoá công khai nhúng trong app thì mới được cài. Gói báo lỗi chỉ được tạo trên máy khi bạn bấm nút và không bao giờ tự gửi đi. Toàn bộ dữ liệu trên máy nằm trong thư mục `%LOCALAPPDATA%\OverSub`:
 
 - `keys.bin`: chứa key API bạn đã nhập, được Windows mã hoá bằng DPAPI theo đúng tài khoản người dùng Windows của bạn (không bao giờ ghi key ra nhật ký hay hiện nguyên key trên màn hình).
 - `lgtv.bin`: chứa thông tin ghép nối với TV LG (nếu bạn dùng tính năng phụ đề trên TV), cũng được mã hoá bằng DPAPI theo tài khoản Windows.
 - `settings.json`, `ui-memory.json` và các tệp trí nhớ dịch: lưu cài đặt, hồ sơ vùng chọn của từng game, xưng hô và các câu đã dịch.
+- `supporters.json`: bản nhớ trên máy của bảng cảm ơn, tải từ GitHub khi bạn mở cửa sổ Ủng hộ.
 - `voice`: chứa bản Python riêng và model giọng đọc VieNeu, xoá được bằng nút Gỡ giọng đọc ở Cài đặt → Giọng đọc.
 - `Logs`: chứa nhật ký chẩn đoán theo từng phiên chạy. Nhật ký có ghi chữ đọc được từ game và bản dịch để phục vụ tìm lỗi, nhưng không bao giờ ghi key API.
+- `Reports`: chứa các gói báo lỗi `.zip` tạo từ nút Gửi báo lỗi… (giữ 5 gói mới nhất).
 
 ## Câu hỏi thường gặp và xử lý sự cố
 
@@ -363,14 +369,14 @@ Bộ cài hiện chưa có chứng chỉ chữ ký số trả phí nên Windows 
 <details>
 <summary>Cách gỡ cài đặt và xoá toàn bộ dữ liệu</summary>
 
-Vào Windows Settings → Apps → Installed apps, tìm OverSub và bấm Uninstall. Mặc định thư mục `%LOCALAPPDATA%\OverSub` (chứa cài đặt, key đã mã hoá, hồ sơ game, trí nhớ dịch, thư mục `voice` và nhật ký) được giữ lại để nếu bạn cài bản mới thì không phải thiết lập lại. Giọng đọc cài trong app nằm trong thư mục `voice`, có thể gỡ riêng bằng nút Gỡ giọng đọc ở Cài đặt → Giọng đọc hoặc xoá cùng cả thư mục dữ liệu. Nếu muốn xoá sạch mọi dữ liệu của OverSub khỏi máy, hãy mở File Explorer, dán `%LOCALAPPDATA%\OverSub` vào thanh địa chỉ và xoá thư mục này. Nếu trước đây bạn từng tự cài Python 3.12 và gói `vieneu` từ bản cũ thì gỡ riêng trong Installed apps.
+Vào Windows Settings → Apps → Installed apps, tìm OverSub và bấm Uninstall. Bộ gỡ sẽ hỏi bạn có muốn xoá luôn thư mục dữ liệu `%LOCALAPPDATA%\OverSub` (chứa cài đặt, key đã mã hoá, hồ sơ game, trí nhớ dịch, giọng đọc đã cài trong `voice` và nhật ký) hay không; mặc định chọn Không để giữ lại cho lần cài sau. Nếu gỡ bằng dòng lệnh ở chế độ im lặng, bộ gỡ luôn giữ lại dữ liệu trừ khi thêm tham số `/DELETEDATA=1`. Giọng đọc cài trong app nằm trong thư mục `voice`, có thể gỡ riêng bằng nút Gỡ giọng đọc ở Cài đặt → Giọng đọc hoặc xoá cùng cả thư mục dữ liệu. Bạn cũng có thể xoá tay bằng cách mở File Explorer, dán `%LOCALAPPDATA%\OverSub` vào thanh địa chỉ rồi xoá thư mục này. Nếu trước đây bạn từng tự cài Python 3.12 và gói `vieneu` từ bản cũ thì gỡ riêng trong Installed apps.
 </details>
 
 ## Giới hạn hiện tại
 
 - Bộ cài chưa có chữ ký số, nên Windows SmartScreen cảnh báo ở lần mở đầu tiên.
 - Chưa có bản dựng riêng cho máy Windows dùng chip ARM.
-- Chưa có tính năng tự cập nhật trong ứng dụng.
+- Các bản từ 0.10.18 trở về trước chưa có tự cập nhật, nên cần tải và cài bản mới bằng tay một lần để có tính năng này.
 - Giọng đọc tiếng Việt lần đầu cài cần tải khoảng 0,4 GB. Trong khoảng 7 giây đầu sau khi mở app, lúc giọng đọc đang nạp model, câu thoại có thể chỉ hiện chữ mà chưa được đọc bằng giọng VieNeu.
 - Khi chơi game chạy trực tiếp trên máy ở chế độ Exclusive Fullscreen (toàn màn hình độc quyền kiểu cũ của một số game DirectX 9 hoặc DirectX 11), lớp cửa sổ nổi của Windows có thể không hiện đè lên trên game được; khi đó vui lòng đổi chế độ hiển thị trong cài đặt của game sang Borderless Windowed (Cửa sổ không viền) hoặc Windowed.
 - Game tiếng Nhật, Hàn, Trung mới được thử với phụ đề hội thoại; Dịch màn hình và tiếng Trung phồn thể chưa được thử.
@@ -378,11 +384,18 @@ Vào Windows Settings → Apps → Installed apps, tìm OverSub và bấm Uninst
 
 ## Góp ý và báo lỗi
 
-Vui lòng mở một [Issue](https://github.com/imhillxtz/oversub-windows/issues) trên GitHub, ghi rõ phiên bản OverSub, dòng máy Windows đang dùng, tên game và cách chơi (chơi trên máy, xem và chơi qua capture card, hay chơi trên TV). Nếu được, vui lòng đính kèm tệp nhật ký mới nhất trong `%LOCALAPPDATA%\OverSub\Logs` (mở nhanh bằng nút Mở thư mục ở Cài đặt → Chung → Nhật ký chẩn đoán). Vui lòng đọc qua nhật ký trước khi gửi, vì nhật ký có chứa các câu chữ đọc được trong game của bạn.
+Cách nhanh nhất là mở Cài đặt → Chung (nơi có dòng số phiên bản `OverSub x.y.z`) rồi bấm Gửi báo lỗi…. App tạo một tệp `.zip` trên máy trong `%LOCALAPPDATA%\OverSub\Reports` (giữ 5 gói mới nhất, gồm nhật ký, cài đặt và thông tin máy; không có key API, thông tin ghép nối TV hay trí nhớ dịch) rồi mở cửa sổ với ba nút: Mở thư mục có tệp, Mở trang báo lỗi (mở trang Issue mới trên GitHub, điền sẵn phiên bản và thông tin máy) và Gửi qua email (soạn thư tới `hillx.design@gmail.com`). App không tự gửi gì; bạn tự kéo tệp `.zip` vào trang báo lỗi hoặc đính kèm vào thư. Khi gặp lỗi giao diện không bắt được, app vẫn chạy và báo một lần mỗi phiên trên dòng trạng thái, chỉ tới nút Gửi báo lỗi….
+
+Bạn cũng có thể mở trực tiếp một [Issue](https://github.com/imhillxtz/oversub-windows/issues) trên GitHub, ghi rõ phiên bản OverSub, dòng máy Windows đang dùng, tên game, cách chơi và đính kèm tệp nhật ký mới nhất trong `%LOCALAPPDATA%\OverSub\Logs` (mở nhanh bằng nút Mở thư mục ở Cài đặt → Chung → Nhật ký chẩn đoán). Vui lòng đọc qua nhật ký trước khi gửi, vì nhật ký có chứa các câu chữ đọc được trong game của bạn.
 
 ## Ủng hộ
 
-OverSub miễn phí cho mọi người. Nếu thấy app hữu ích, bạn có thể mời mình một ly cà phê qua [paypal.me/ngochieuit](https://paypal.me/ngochieuit). Gắn sao cho kho này hoặc giới thiệu OverSub với bạn bè cũng là một cách ủng hộ.
+OverSub miễn phí cho mọi người. Nếu thấy app hữu ích, bạn có thể mời mình một ly cà phê qua [paypal.me/ngochieuit](https://paypal.me/ngochieuit), hoặc bấm nút Ủng hộ ở cửa sổ chính (hay bấm Ủng hộ ở thẻ Ủng hộ OverSub trong Cài đặt → Chung) để mở cửa sổ Ủng hộ ngay trong app:
+
+- Trong nước · VietQR: chọn mức 20.000đ, 50.000đ, 100.000đ hoặc tự nhập số tiền, rồi quét mã bằng ứng dụng ngân hàng, MoMo hay ZaloPay (người nhận `TRINH NGOC HIEU`, ví MoMo, nội dung `OverSub`). Bạn có thể nhập tên vào ô tên để ghi kèm trong nội dung chuyển khoản và hiện trong bảng cảm ơn của app.
+- Quốc tế · PayPal: chọn mức 3, 5, 10 đô la hoặc tự nhập số tiền, rồi bấm Mở PayPal để mở trang `paypal.me/ngochieuit`.
+
+Cửa sổ Ủng hộ có bảng cảm ơn những người đã ủng hộ (tự ẩn khi chưa có tên nào) và ô Mình đã ủng hộ rồi. Khi tổng số câu đã dịch vượt các mốc 300, 1.000, 3.000 và 10.000 câu, OverSub hiện một lời cảm ơn kèm nút Ủng hộ lúc vừa mở app (mỗi mốc một lần, không bao giờ hiện khi đang chơi; đánh dấu ô Mình đã ủng hộ rồi để tắt hẳn các lời nhắc này). Gắn sao cho kho này hoặc giới thiệu OverSub với bạn bè cũng là một cách ủng hộ.
 
 ## Nền tảng khác
 

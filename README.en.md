@@ -99,7 +99,7 @@ The installer includes .NET, so you don't need to install .NET separately.
 
 1. Go to [Releases](https://github.com/imhillxtz/oversub-windows/releases) and download `OverSub-Setup-x.y.z.exe` under Assets.
 2. Open the downloaded file. The installer isn't digitally signed yet, so Windows SmartScreen shows "Windows protected your PC". Click More info, check that the file name is `OverSub-Setup-x.y.z.exe`, then click Run anyway. If Windows is set to Vietnamese, these buttons appear in Vietnamese in the same place. Your browser may also say the file isn't commonly downloaded; choose Keep.
-3. Follow the installer steps. OverSub installs for your Windows account into `%LOCALAPPDATA%\Programs\OverSub`, needs no administrator rights, and adds a Start menu shortcut.
+3. Follow the installer steps (the installer interface is in Vietnamese and English, chosen automatically from your Windows language). OverSub installs for your Windows account into `%LOCALAPPDATA%\Programs\OverSub`, needs no administrator rights, and adds a Start menu shortcut. If you open OverSub a second time while it is already running (for example from Armoury Crate and from the Start menu), the running window comes to the front and the second copy exits so two copies don't fight over the capture card and the voice.
 
 ### Verifying the SHA-256 checksum
 
@@ -113,7 +113,11 @@ Compare the result with the contents of `OverSub-Setup-x.y.z.exe.sha256` on the 
 
 ### Updating
 
-OverSub doesn't update itself yet. To be notified when a new version comes out, click Watch → Custom → Releases at the top of this repository. To update, download and run the new version's installer; your settings, game profiles, translation memory and saved keys are kept.
+OverSub checks the Releases page of this repository for a new version 10 seconds after opening and every 6 hours after that. When a new version is available, a banner appears in the main window with a View button. Select View to open a window listing the changes from every release since the version you are using, with Update, Later and Skip this version buttons. When you select Update, the app downloads the installer, verifies the author's digital signature against the public key embedded in the app, and runs the installer silently; OverSub then closes and reopens on its own. Your settings, keys, game profiles, translation memory and installed voice are all kept.
+
+Under Settings → General, you can turn the Check for new versions automatically switch on or off (on by default), turn on Install a new version when OverSub closes (off by default; when turned on, the new version is downloaded ahead of time and installed when you close the app), or select Check for updates at any time.
+
+You can still download a new installer from the Releases page and run it over your current installation (click Watch → Custom → Releases at the top of this repository if you want notifications from GitHub). Versions 0.10.18 and earlier do not have automatic updates yet, so you need to download and install the new version by hand once for later versions to update automatically.
 
 ## Getting started in 5 minutes
 
@@ -251,7 +255,7 @@ To translate with AI, you need at least one Gemini or Groq API key. You can add 
 | Groq | Very fast. Steps in right away when Gemini is busy, takes longer than 2.5 seconds to answer or runs out of quota. |
 | Google Translate (fallback) | No key needed. When you have no key yet, OverSub translates with Google Translate and the status line in the main window states clearly that there is no translation key so Google Translate is in use. When Show a Google Translate version while waiting for AI is turned on, if the AI version hasn't arrived after 1.5 seconds, the line temporarily shows Google Translate and is replaced by the AI version once ready (the voice still reads only the AI version). When all AI services fail or run out of quota, OverSub uses Google Translate so play isn't interrupted. |
 
-You should add both Gemini and Groq keys so they back each other up. The saved key list shows a colored dot and a status line for each key: active with the number of lines translated today, paused after running out of quota with the time it can be used again, or the most recent error. When all keys are briefly paused after hitting a per-minute rate limit, dialogue lines wait a few seconds until a key reopens instead of dropping the line, and Screen translation yields key quota to dialogue.
+You should add both Gemini and Groq keys so they back each other up. Under Settings → Translation, the collapsible More translation services (optional) section also lets you add keys for Cerebras, Mistral and OpenRouter (all with free tiers, each with its own Get a key button, key box and Add button) as extra backups when both Gemini and Groq run out of quota. The saved key list shows a colored dot and a status line for each key: active with the number of lines translated today, paused after running out of quota with the time it can be used again, or the most recent error. When all keys are briefly paused after hitting a per-minute rate limit, dialogue lines wait a few seconds until a key reopens instead of dropping the line, and Screen translation yields key quota to dialogue.
 
 Under Subtitle translation priority, you can choose:
 
@@ -305,13 +309,15 @@ When translating, only the recognized text is sent to the translation service:
 - The AI services you added keys for (Gemini, Groq) receive the line to translate, a few previous lines for context, the forms of address of related characters and the game's genre.
 - Google Translate receives text when showing a temporary translation while waiting for AI or when using Instant mode in Screen translation. If you don't want text sent to Google Translate, go to Settings → Translation, turn off Show a Google Translate version while waiting for AI, and set Screen translation speed to Wait for AI.
 
-OverSub has no server of its own, collects no usage data and has no ads. All local data on your PC is stored in `%LOCALAPPDATA%\OverSub`:
+OverSub has no server of its own, collects no usage data and has no ads. Update checks only query the public Releases page of this repository on GitHub without sending any user information; a downloaded installer is run only if its digital signature from the author matches the public key embedded in the app. Bug report packages are created on your PC only when you press the button and are never sent automatically. All local data on your PC is stored in `%LOCALAPPDATA%\OverSub`:
 
 - `keys.bin`: holds the API keys you entered, encrypted by Windows with DPAPI for your specific Windows user account (keys are never written to logs or shown in full on screen).
 - `lgtv.bin`: holds pairing information for your LG TV (if you use TV subtitles), also encrypted with DPAPI for your Windows account.
 - `settings.json`, `ui-memory.json` and translation memory files: store settings, per-game region profiles, forms of address and translated lines.
+- `supporters.json`: local cache of the supporter thank-you list, downloaded from GitHub when you open the Support window.
 - `voice`: holds the private Python runtime and VieNeu voice models, removable with the Remove voice button under Settings → Voice.
 - `Logs`: holds per-session diagnostic logs. Logs include text read from the game and translations to help troubleshoot bugs, but never contain API keys.
+- `Reports`: holds `.zip` bug report packages created with Send a bug report… (keeps the 5 most recent packages).
 
 ## Troubleshooting and FAQ
 
@@ -363,14 +369,14 @@ The installer doesn't have a paid code-signing certificate yet, so Windows Smart
 <details>
 <summary>How to uninstall and remove all data</summary>
 
-Go to Windows Settings → Apps → Installed apps, find OverSub and click Uninstall. By default, the `%LOCALAPPDATA%\OverSub` folder (holding settings, encrypted keys, game profiles, translation memory, the `voice` folder and logs) is kept so you don't have to set everything up again if you install a newer version. The voice installed inside the app lives in the `voice` folder and can be removed on its own with Remove voice under Settings → Voice, or deleted along with the data folder. If you want to wipe all OverSub data from your PC, open File Explorer, paste `%LOCALAPPDATA%\OverSub` into the address bar and delete that folder. If you previously installed Python 3.12 and the `vieneu` package yourself for an older version, uninstall them separately in Installed apps.
+Go to Windows Settings → Apps → Installed apps, find OverSub and click Uninstall. The uninstaller asks whether to also delete the `%LOCALAPPDATA%\OverSub` data folder (holding settings, encrypted keys, game profiles, translation memory, the voice installed in `voice` and logs); the default choice is No so your data is kept if you install again later. When running a silent command-line uninstall, data is always kept unless you pass `/DELETEDATA=1`. The voice installed inside the app lives in the `voice` folder and can be removed on its own with Remove voice under Settings → Voice, or deleted along with the data folder. You can also delete the folder by hand: open File Explorer, paste `%LOCALAPPDATA%\OverSub` into the address bar and delete that folder. If you previously installed Python 3.12 and the `vieneu` package yourself for an older version, uninstall them separately in Installed apps.
 </details>
 
 ## Current limitations
 
 - The installer isn't digitally signed yet, so Windows SmartScreen warns on first launch.
 - There is no native build for Windows PCs with ARM chips yet.
-- There is no automatic in-app update feature yet.
+- Versions 0.10.18 and earlier do not have automatic updates yet, so you need to download and install the new version by hand once to get automatic updates.
 - The Vietnamese voice requires downloading about 0.4 GB on first installation. During the first 7 seconds after opening the app, while the voice is loading its model, dialogue lines may show text only without being read aloud by VieNeu yet.
 - When playing a game running directly on the PC in legacy Exclusive Fullscreen mode (used by some older DirectX 9 or DirectX 11 games), Windows overlay windows may not be able to appear on top of the game; please switch the display mode in the game's settings to Borderless Windowed or Windowed.
 - Japanese, Korean and Chinese games have been tested so far with dialogue subtitles; Screen translation and Traditional Chinese haven't been tested yet.
@@ -378,11 +384,18 @@ Go to Windows Settings → Apps → Installed apps, find OverSub and click Unins
 
 ## Feedback and bug reports
 
-Please open an [Issue](https://github.com/imhillxtz/oversub-windows/issues) on GitHub with your OverSub version, the Windows PC model you use, the game title and how you play (playing on the PC, watch and play through a capture card, or playing on the TV). If possible, please attach the latest log file in `%LOCALAPPDATA%\OverSub\Logs` (open it quickly with the Open folder button under Settings → General → Diagnostic log). Please read through the log before sending it, as the log contains lines of text read from your game.
+The quickest way is to open Settings → General (which shows the version line `OverSub x.y.z`) and select Send a bug report…. The app creates a `.zip` package on your PC in `%LOCALAPPDATA%\OverSub\Reports` (keeping the 5 most recent packages, with logs, settings and PC information; no API keys, TV pairing data or translation memory) and opens a window with three buttons: Show the file, Open the issue page (opens a new GitHub Issue with your version and PC details prefilled) and Send by email (starts an email to `hillx.design@gmail.com`). The app never sends anything on its own; drag the `.zip` file onto the issue page or attach it to the email yourself. If an unexpected interface error occurs while running, OverSub keeps running and shows a notice once per session on the status line pointing to Send a bug report….
+
+You can also open an [Issue](https://github.com/imhillxtz/oversub-windows/issues) on GitHub directly with your OverSub version, the Windows PC model you use, the game title and how you play, and attach the latest log file from `%LOCALAPPDATA%\OverSub\Logs` (open it quickly with the Open folder button under Settings → General → Diagnostic log). Please read through the log before sending it, as the log contains lines of text read from your game.
 
 ## Support
 
-OverSub is free for everyone. If you find the app useful, you can buy me a coffee at [paypal.me/ngochieuit](https://paypal.me/ngochieuit). Starring this repository or recommending OverSub to a friend is another way to support it.
+OverSub is free for everyone. If you find the app useful, you can buy me a coffee at [paypal.me/ngochieuit](https://paypal.me/ngochieuit), or select Support in the main window (or Support in the Support OverSub card under Settings → General) to open the Support window right inside the app:
+
+- Vietnam · VietQR: pick 20,000₫, 50,000₫, 100,000₫ or enter any amount, then scan the QR code with a banking app, MoMo or ZaloPay (recipient `TRINH NGOC HIEU`, MoMo wallet, message `OverSub`). You can type your name into the name box so it is included in the transfer message and listed on the thank-you board in the app.
+- International · PayPal: pick $3, $5, $10 or enter any amount, then select Open PayPal to open `paypal.me/ngochieuit`.
+
+The Support window includes a thank-you board for supporters (hidden when there are no names yet) and the I've already supported (stop reminders) checkbox. When your total translated lines pass 300, 1,000, 3,000 and 10,000, OverSub shows a thank-you note with a Support button when opening the app (once per milestone, never while you are playing; check I've already supported (stop reminders) to turn these reminders off completely). Starring this repository or recommending OverSub to a friend is another way to support it.
 
 ## Other platforms
 
