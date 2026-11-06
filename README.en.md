@@ -253,17 +253,24 @@ To translate with AI, you need at least one Gemini or Groq API key. You can add 
 |---|---|
 | Gemini | Produces the most natural translations and keeps tone best among the free options. Free quota is counted per Google Cloud project, so multiple keys created in the same project share one quota; to increase your quota, create keys in separate projects. |
 | Groq | Very fast. Steps in right away when Gemini is busy, takes longer than 2.5 seconds to answer or runs out of quota. |
+| Cerebras | As fast as Groq. The free plan counts quota in words per day. |
+| Mistral | A generous free quota but only one request per second, so it suits a backup role. |
+| OpenRouter | One key for many models. Free models have names ending in :free and are limited in requests per day. |
+| Custom service (paid) | A service with an OpenAI-style API (chat/completions), such as OpenAI, DeepSeek or xAI Grok. The provider bills by text volume; one line of dialogue uses roughly 300 to 600 tokens including context. |
 | Google Translate (fallback) | No key needed. When you have no key yet, OverSub translates with Google Translate and the status line in the main window states clearly that there is no translation key so Google Translate is in use. When Show a Google Translate version while waiting for AI is turned on, if the AI version hasn't arrived after 1.5 seconds, the line temporarily shows Google Translate and is replaced by the AI version once ready (the voice still reads only the AI version). When all AI services fail or run out of quota, OverSub uses Google Translate so play isn't interrupted. |
 
-You should add both Gemini and Groq keys so they back each other up. Under Settings → Translation, the collapsible More translation services (optional) section also lets you add keys for Cerebras, Mistral and OpenRouter (all with free tiers, each with its own Get a key button, key box and Add button) as extra backups when both Gemini and Groq run out of quota. The saved key list shows a colored dot and a status line for each key: active with the number of lines translated today, paused after running out of quota with the time it can be used again, or the most recent error. When all keys are briefly paused after hitting a per-minute rate limit, dialogue lines wait a few seconds until a key reopens instead of dropping the line, and Screen translation yields key quota to dialogue.
+You should add both Gemini and Groq keys so they back each other up. Under Settings → Translation, the More translation services (optional) section, open by default, lets you add keys for Cerebras, Mistral and OpenRouter (all with free tiers, each with its own Get a key button, key box and Add button) as extra backups when both Gemini and Groq run out of quota. At the end of that section, the Custom service (paid) card has a Quick pick a provider list that fills in the name and API address for OpenAI, DeepSeek, xAI (Grok), Together AI or Fireworks, or you can type the API address of any other service with an OpenAI-style API (the address starts with https://), then paste the key and select Add. The Model name box can stay empty: OverSub picks a small model from your account's list, and asks you to enter a name if it can't. The saved key list shows a colored dot and a status line for each key: active with the number of lines translated today, paused after running out of quota with the time it can be used again, or the most recent error. When all keys are briefly paused after hitting a per-minute rate limit, dialogue lines wait a few seconds until a key reopens instead of dropping the line, and Screen translation yields key quota to dialogue.
 
 Under Subtitle translation priority, you can choose:
 
 - Prefer quality (default): uses one primary service throughout (preferring Gemini) to keep tone and forms of address consistent between lines; Groq steps in only when the primary service fails or takes longer than 2.5 seconds.
 - Balanced: balances translation quality against the actual latency measured on your PC.
 - Prefer speed: always puts the fastest-responding service first.
+- Custom: uses exactly the order you set on the Service order and switches card, skipping only services that are failing or out of requests. The first service translates every line of dialogue; the others only back it up.
 
-Free quotas are set by each provider and may change over time.
+The Service order and switches card sits right below Subtitle translation priority. It lists the services that have a key, each with a switch to rest it while keeping its keys; with Custom selected, each row also gets two arrows to move the service up or down. The Advanced: model names section lets you set a model name of your own for Gemini, Groq, Cerebras, Mistral and OpenRouter, for example a paid OpenRouter model; leave a box empty and OverSub chooses.
+
+Free quotas are set by each provider and may change over time. The fees of a custom service are charged by its provider at their own prices.
 
 ### Getting a free key
 
@@ -334,7 +341,7 @@ Screenshots and video streams from the capture card are processed entirely on yo
 
 When translating, only the recognized text is sent to the translation service:
 
-- The AI services you added keys for (Gemini, Groq) receive the line to translate, a few previous lines for context, the forms of address of related characters and the game's genre.
+- The AI services you added keys for (Gemini, Groq, Cerebras, Mistral, OpenRouter or a custom service) receive the line to translate, a few previous lines for context, the forms of address of related characters and the game's genre. For a custom service, this content and your key are sent to the API address you entered.
 - Google Translate receives text when showing a temporary translation while waiting for AI or when using Instant mode in Screen translation. If you don't want text sent to Google Translate, go to Settings → Translation, turn off Show a Google Translate version while waiting for AI, and set Screen translation speed to Wait for AI.
 
 OverSub has no server of its own, collects no usage data and has no ads. Update checks only query the public Releases page of this repository on GitHub without sending any user information; a downloaded installer is run only if its digital signature from the author matches the public key embedded in the app. Bug report packages are created on your PC only when you press the button and are never sent automatically. All local data on your PC is stored in `%LOCALAPPDATA%\OverSub`:

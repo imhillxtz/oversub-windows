@@ -253,17 +253,24 @@ Bấm nút Lịch sử trên cửa sổ chính (hoặc trên thanh nút của m�
 |---|---|
 | Gemini | Dịch tự nhiên và giữ văn phong tốt nhất trong nhóm miễn phí. Hạn mức miễn phí tính theo dự án Google Cloud, nên nhiều key tạo trong cùng một dự án sẽ dùng chung hạn mức; muốn tăng hạn mức cần tạo key ở các dự án khác nhau. |
 | Groq | Tốc độ phản hồi rất nhanh. Đóng vai trò dự phòng tức thì khi Gemini bận, trả lời chậm quá 2,5 giây hoặc hết lượt. |
+| Cerebras | Nhanh ngang Groq. Gói miễn phí tính hạn mức theo số chữ mỗi ngày. |
+| Mistral | Hạn mức miễn phí rộng nhưng chỉ một lượt mỗi giây, nên hợp làm dự phòng. |
+| OpenRouter | Một key dùng được nhiều model. Model miễn phí có tên kết thúc bằng :free và bị giới hạn số lượt mỗi ngày. |
+| Dịch vụ tự thêm (trả phí) | Dịch vụ có API kiểu OpenAI (chat/completions), như OpenAI, DeepSeek hay xAI Grok. Nhà cung cấp tính phí theo lượng chữ; một câu thoại dùng khoảng 300 đến 600 token kèm ngữ cảnh. |
 | Google Dịch (tạm) | Không cần key. Khi chưa có key nào, OverSub dịch bằng Google Dịch và dòng trạng thái ở cửa sổ chính báo rõ "Chưa có key dịch nên đang dùng Google Dịch". Khi bật ô Hiện bản Google Dịch trong lúc chờ AI, nếu bản AI chưa về sau 1,5 giây thì câu thoại hiện tạm bản Google Dịch rồi tự thay bằng bản AI khi có (giọng đọc vẫn chỉ đọc bản AI). Khi mọi dịch vụ AI đều lỗi hoặc hết lượt, OverSub dùng bản Google Dịch để việc chơi không bị đứt quãng. |
 
-Bạn nên thêm cả key Gemini và key Groq để dự phòng cho nhau. Ở Cài đặt → Dịch vụ dịch còn có khối thu gọn Dịch vụ dịch khác (không bắt buộc) để thêm key của Cerebras, Mistral và OpenRouter (đều có gói miễn phí, mỗi dịch vụ có nút Lấy key, ô nhập key và nút Thêm) làm dự phòng khi Gemini và Groq hết lượt. Danh sách key đã lưu có chấm màu và dòng trạng thái của từng key: đang hoạt động kèm số câu đã dịch hôm nay, tạm nghỉ vì hết lượt kèm lúc dùng lại được, hoặc lỗi lần gần nhất. Khi tất cả các key đang tạm nghỉ vì chạm giới hạn lượt theo phút, câu thoại sẽ tự chờ vài giây tới khi key mở lại thay vì bỏ sót câu, và Dịch màn hình tự nhường lượt key cho câu thoại.
+Bạn nên thêm cả key Gemini và key Groq để dự phòng cho nhau. Ở Cài đặt → Dịch vụ dịch còn có khối Dịch vụ dịch khác (không bắt buộc), mở sẵn, để thêm key của Cerebras, Mistral và OpenRouter (đều có gói miễn phí, mỗi dịch vụ có nút Lấy key, ô nhập key và nút Thêm) làm dự phòng khi Gemini và Groq hết lượt. Cuối khối là thẻ Dịch vụ tự thêm (trả phí): bấm Chọn nhanh nhà cung cấp để điền sẵn tên và địa chỉ API của OpenAI, DeepSeek, xAI (Grok), Together AI hoặc Fireworks, hay tự nhập địa chỉ API của một dịch vụ khác có API kiểu OpenAI (địa chỉ bắt đầu bằng https://), rồi dán key và bấm Thêm. Ô Tên model có thể để trống: OverSub chọn một model nhỏ trong danh sách của tài khoản, và báo để bạn nhập tên nếu không chọn được. Danh sách key đã lưu có chấm màu và dòng trạng thái của từng key: đang hoạt động kèm số câu đã dịch hôm nay, tạm nghỉ vì hết lượt kèm lúc dùng lại được, hoặc lỗi lần gần nhất. Khi tất cả các key đang tạm nghỉ vì chạm giới hạn lượt theo phút, câu thoại sẽ tự chờ vài giây tới khi key mở lại thay vì bỏ sót câu, và Dịch màn hình tự nhường lượt key cho câu thoại.
 
 Ở mục Ưu tiên khi dịch phụ đề, bạn có thể chọn:
 
 - Ưu tiên chất lượng (mặc định): dùng một dịch vụ chính xuyên suốt (ưu tiên Gemini) để giữ giọng văn và xưng hô đồng nhất giữa các câu; chỉ khi dịch vụ chính lỗi hoặc chậm quá 2,5 giây thì Groq mới đỡ lời.
 - Cân bằng: cân đối giữa chất lượng bản dịch và độ trễ thực tế đo được trên máy.
 - Ưu tiên tốc độ: luôn ưu tiên dịch vụ có thời gian phản hồi nhanh nhất.
+- Tuỳ chỉnh: dùng đúng thứ tự bạn sắp ở thẻ Thứ tự và bật tắt dịch vụ; chỉ bỏ qua dịch vụ đang lỗi hoặc hết lượt. Dịch vụ đầu dịch mọi câu thoại, các dịch vụ sau chỉ dự phòng.
 
-Hạn mức miễn phí do từng nhà cung cấp quy định và có thể thay đổi theo thời gian.
+Thẻ Thứ tự và bật tắt dịch vụ nằm ngay dưới mục Ưu tiên. Thẻ liệt kê các dịch vụ đã có key, mỗi dịch vụ có một công tắc để cho nghỉ mà vẫn giữ key; khi chọn Tuỳ chỉnh, mỗi dòng có thêm hai mũi tên để đưa dịch vụ lên hoặc xuống. Khối Nâng cao: tên model cho phép đặt tên model riêng cho Gemini, Groq, Cerebras, Mistral và OpenRouter, ví dụ một model trả phí của OpenRouter; để trống thì OverSub tự chọn.
+
+Hạn mức miễn phí do từng nhà cung cấp quy định và có thể thay đổi theo thời gian. Phí của dịch vụ tự thêm do nhà cung cấp tính theo bảng giá của họ.
 
 ### Lấy key miễn phí
 
@@ -334,7 +341,7 @@ Hình chụp màn hình và luồng video từ capture card được xử lý ho
 
 Khi dịch, chỉ có văn bản chữ đọc được mới gửi tới dịch vụ dịch:
 
-- Các dịch vụ AI mà bạn đã thêm key (Gemini, Groq) nhận câu cần dịch, một vài câu thoại trước đó làm ngữ cảnh, danh sách xưng hô của các nhân vật liên quan và thể loại game.
+- Các dịch vụ AI mà bạn đã thêm key (Gemini, Groq, Cerebras, Mistral, OpenRouter hoặc dịch vụ tự thêm) nhận câu cần dịch, một vài câu thoại trước đó làm ngữ cảnh, danh sách xưng hô của các nhân vật liên quan và thể loại game. Với dịch vụ tự thêm, nội dung này và key được gửi tới địa chỉ API do bạn nhập.
 - Google Dịch nhận chữ khi cần hiện bản dịch tạm trong lúc chờ AI hoặc khi dùng chế độ Tức thì của Dịch màn hình. Nếu bạn không muốn gửi chữ tới Google Dịch, hãy vào Cài đặt → Dịch vụ dịch, tắt ô Hiện bản Google Dịch trong lúc chờ AI và đặt Tốc độ Dịch màn hình thành Chờ bản AI.
 
 OverSub không có máy chủ riêng, không thu thập dữ liệu sử dụng và không có quảng cáo. Việc kiểm tra cập nhật chỉ hỏi trang Releases công khai của kho này trên GitHub một lần mỗi đợt, không gửi thông tin gì về người dùng; bộ cài tải về phải có chữ ký số của tác giả khớp với khoá công khai nhúng trong app thì mới được cài. Gói báo lỗi chỉ được tạo trên máy khi bạn bấm nút và không bao giờ tự gửi đi. Toàn bộ dữ liệu trên máy nằm trong thư mục `%LOCALAPPDATA%\OverSub`:
