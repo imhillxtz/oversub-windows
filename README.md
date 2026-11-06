@@ -59,6 +59,7 @@ Các tính năng khác:
 - Chế độ Chỉ chữ ở màn đọc cạnh TV: hiện chữ dịch của vùng Dịch màn hình bằng chữ to như phụ đề và đọc to thành tiếng cho lúc ngồi xa màn hình.
 - Thể loại và xưng hô theo từng game: chọn thể loại (trung cổ, kiếm hiệp, anime, đời thường...) để AI chọn giọng văn và cách xưng hô phù hợp. OverSub tự học và giữ nguyên cách từng nhân vật tự xưng qua suốt buổi chơi, hoặc cho bạn chọn tay cách xưng của từng nhân vật.
 - Giữ nguyên tên riêng: tự nhận tên nhân vật, địa danh, chiêu thức từ lời thoại để không dịch sang nghĩa tiếng Việt, kèm danh sách tên riêng cho bạn tự thêm hoặc xoá.
+- Lọc vùng phụ đề theo từng game: mặc định dịch mọi câu và đoạn, chỉ bỏ nhãn nút; có thể dịch cả nhãn nút hoặc lọc chặt hơn.
 - Trí nhớ bản dịch theo từng game: mỗi game lưu riêng câu thoại đã dịch, ngữ cảnh hội thoại, xưng hô và chữ giao diện của Dịch màn hình. Câu hoặc mục menu gặp lại sẽ hiện ngay mà không tốn lượt gọi AI.
 - Lịch sử thoại: xem lại và nghe đọc lại các câu vừa qua, ghim tên riêng từ câu thoại, hoặc bỏ qua những dòng chữ cố định trên màn hình (logo, nhãn giao diện) để từ đó không dịch và không đọc nữa.
 - Đọc được 10 ngôn ngữ trong game: tiếng Anh, Nhật, Hàn, Trung (giản thể và phồn thể), Pháp, Đức, Tây Ban Nha, Bồ Đào Nha, Ý và Nga. Dịch sang 12 ngôn ngữ; các ngôn ngữ khác tiếng Việt dùng giọng đọc có sẵn của Windows.
@@ -130,6 +131,14 @@ Trình chọn vùng cho phép chọn cùng lúc vùng phụ đề và các vùng
 
 - Dùng chuột hoặc cảm ứng: kéo bên trong khung để dời chỗ, kéo bốn góc để đổi cỡ, hoặc kéo trên vùng trống để vẽ lại khung đang chọn. Chạm hoặc bấm vào khung nào để chọn khung đó. Thanh nút bên dưới có Thêm vùng dịch màn hình, Xoá vùng này, Xoá mọi vùng dịch, Huỷ và Lưu vùng.
 - Dùng tay cầm: gạt cần trái hoặc bấm D-pad để di chuyển, gạt cần phải để đổi cỡ, bấm LB hoặc RB để đổi giữa các vùng, bấm Y để thêm vùng dịch màn hình, bấm X để xoá vùng đang chọn (giữ X lâu để xoá mọi vùng dịch màn hình), bấm A để lưu và B để huỷ. Khi chọn vùng ngay trên game đang chạy trên máy, vui lòng giữ nút View trong lúc bấm các nút A, B, X, Y, LB, RB để nút bấm không lọt vào game.
+
+### Lọc vùng phụ đề
+
+Mặc định OverSub dịch mọi câu và đoạn trong vùng phụ đề, gồm cả câu nhận vật phẩm và lời giải thích không có tên người nói; chỉ nhãn nút và tên mục ngắn được bỏ qua. Ô Lọc vùng phụ đề trong bảng Game đang chơi (mở bằng nút Đổi cạnh tên game) đổi được mức này cho từng game:
+
+- Dịch mọi câu (mặc định): dịch mọi câu và đoạn, bỏ qua nhãn nút và tên mục ngắn.
+- Dịch cả nhãn nút: không lọc gì, nhãn nút và tên mục cũng được dịch và đọc to.
+- Lọc chặt: bỏ thêm những câu giống thông báo hệ thống, như câu nhận vật phẩm. Có thể bỏ sót câu.
 
 ### Phụ đề trên game và Phụ đề nổi
 

@@ -59,6 +59,7 @@ Other features:
 - Text only mode on the TV reading screen: shows translated text from Screen translation regions in large print like dialogue and reads it aloud when you sit far from the screen.
 - Per-game genre and forms of address: pick a genre (medieval, wuxia, anime, everyday and others) so the AI chooses a fitting tone and Vietnamese pronouns. OverSub learns and keeps each character's form of self-address across the session, or lets you pick each character's pronouns by hand.
 - Keep proper names: automatically recognizes character names, place names and skill names from dialogue so they aren't translated into literal Vietnamese meanings, along with a proper-name list you can add to or remove from.
+- Subtitle filter per game: by default every sentence and passage is translated and only button labels are skipped; you can include button labels or filter more strictly.
 - Per-game translation memory: each game stores its own translated lines, dialogue context, forms of address and Screen translation interface text. Lines or menu items seen again appear right away without using AI requests.
 - Dialogue history: look back at recent lines and hear them again, pin proper names from a line, or ignore fixed on-screen text (logos, interface labels) so it is never translated or read again.
 - Reads 10 in-game languages: English, Japanese, Korean, Chinese (Simplified and Traditional), French, German, Spanish, Portuguese, Italian and Russian. Translates into 12 languages; languages other than Vietnamese use the built-in Windows voices.
@@ -130,6 +131,14 @@ The region editor lets you select the subtitle region and Screen translation reg
 
 - With a mouse or touch: drag inside a box to move it, drag any of the four corners to resize it, or drag across empty space to redraw the selected box. Tap or click any box to select it. The bottom bar has Add screen region, Remove this region, Remove all screen regions, Cancel and Save regions.
 - With a controller: use the left stick or D-pad to move, the right stick to resize, LB or RB to switch between regions, Y to add a screen region, X to remove the selected region (hold X to remove all screen regions), A to save and B to cancel. When selecting regions directly over a game running on the PC, please hold View while pressing A, B, X, Y, LB or RB so the button presses don't go into the game.
+
+### Subtitle region filter
+
+By default OverSub translates every sentence and passage in the subtitle region, including item pickup lines and explanations with no speaker name; only button labels and short menu names are skipped. You can change this per game with Subtitle region filter in the Current game panel (opened with Change next to the game name):
+
+- Translate every sentence (default): translates every sentence and passage, and skips button labels and short menu names.
+- Include button labels: nothing is filtered; button labels and menu names are translated and read aloud too.
+- Strict filter: also skips lines that look like system notices, such as item pickups. Some lines may be missed.
 
 ### On-game subtitles and Floating subtitles
 
