@@ -265,6 +265,34 @@ Bạn nên thêm cả key Gemini và key Groq để dự phòng cho nhau. Ở C�
 
 Hạn mức miễn phí do từng nhà cung cấp quy định và có thể thay đổi theo thời gian.
 
+### Lấy key miễn phí
+
+Cả hai dịch vụ dưới đây có gói miễn phí và đều cần một tài khoản. App chỉ lưu key trên máy bạn (mã hoá theo tài khoản Windows) và gửi chữ cần dịch tới dịch vụ bạn đã thêm key.
+
+**Gemini (Google AI Studio, khuyên dùng)**
+
+1. Bấm Lấy key trên thẻ Gemini (Cài đặt → Dịch vụ dịch, hoặc nút Mở trang lấy key ở Hướng dẫn lần đầu), hay mở [aistudio.google.com/apikey](https://aistudio.google.com/apikey).
+2. Đăng nhập bằng tài khoản Google. Lần đầu, hãy chấp nhận điều khoản của Google AI Studio; theo tài liệu của Google, tài khoản mới được tạo sẵn một dự án và một key mặc định.
+3. Ở trang API Keys, chép key đã có hoặc bấm Create API key để tạo key mới.
+4. Quay lại OverSub, dán key vào ô Key Gemini, bấm Thêm rồi bấm Lưu.
+
+Nếu trang không cho tạo key (báo "You do not have permission to create a key in this project") hoặc bạn không có dự án nào, thường là do tài khoản Google Cloud có sẵn chưa có dự án mặc định. Mở Dashboard ở thanh bên trái, chọn Projects, bấm Import projects, chọn một dự án rồi quay lại trang API Keys để tạo key.
+
+Hạn mức miễn phí của Gemini tính theo dự án Google Cloud, không theo key, nên nhiều key trong cùng một dự án dùng chung hạn mức. Hạn mức khác nhau giữa các model, đổi theo thời gian và Google không bảo đảm; hạn mức theo ngày đặt lại vào nửa đêm giờ Thái Bình Dương. Xem hạn mức hiện tại của bạn ở trang hạn mức (rate limit) trong Google AI Studio. Nếu trang Google ghi key ở trạng thái Blocked (key lâu không dùng bị chặn), hãy tạo key mới.
+
+**Groq**
+
+1. Bấm Lấy key trên thẻ Groq, hay mở [console.groq.com/keys](https://console.groq.com/keys).
+2. Đăng nhập hoặc tạo tài khoản Groq nếu trang yêu cầu. Nếu tài khoản thuộc một nhóm, chỉ chủ nhóm hoặc thành viên có vai trò developer mới tạo được key.
+3. Bấm Create API Key, làm theo các bước trên trang rồi chép key.
+4. Quay lại OverSub, dán key vào ô Key Groq, bấm Thêm rồi bấm Lưu.
+
+Groq giới hạn theo từng model (số yêu cầu và số token mỗi phút, mỗi ngày), và gói miễn phí có hạn mức khác gói Developer. Xem hạn mức hiện tại của tài khoản ở trang Limits sau khi đăng nhập.
+
+**Giữ key bí mật**
+
+Hãy coi key như mật khẩu: không đăng lên mạng xã hội, không dán vào ảnh chụp màn hình hay tệp công khai. Người khác có key sẽ dùng hết hạn mức của bạn. Nếu nghi key bị lộ, tạo key mới ở trang của Google hoặc Groq, xoá key cũ ở đó, rồi bấm Xoá cạnh key cũ trong Cài đặt → Dịch vụ dịch của OverSub và thêm key mới.
+
 ## Tay cầm, cảm ứng và bàn phím
 
 Máy Windows có nhiều kiểu dáng: PC để bàn, laptop, máy tính bảng 2 trong 1 và máy chơi game cầm tay. Mọi màn hình của OverSub đều điều khiển trọn vẹn được bằng tay cầm, cảm ứng, chỉ bàn phím, hoặc bàn phím và chuột, và bạn có thể đổi qua lại bất cứ lúc nào. OverSub tự đổi dòng gợi ý nút ở chân màn hình theo thiết bị bạn vừa chạm tới.

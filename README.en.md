@@ -265,6 +265,34 @@ Under Subtitle translation priority, you can choose:
 
 Free quotas are set by each provider and may change over time.
 
+### Getting a free key
+
+Both services below have a free tier and both need an account. The app keeps your keys only on your PC (encrypted for your Windows account) and sends the text to translate only to the services you added a key for.
+
+**Gemini (Google AI Studio, recommended)**
+
+1. Select Get a key on the Gemini card (Settings → Translation, or the Open the key page button in the First-run guide), or open [aistudio.google.com/apikey](https://aistudio.google.com/apikey).
+2. Sign in with a Google account. The first time, accept the Google AI Studio terms; according to Google's documentation, a new account gets a default project and key created for it.
+3. On the API Keys page, copy an existing key or select Create API key to make a new one.
+4. Back in OverSub, paste the key into Gemini keys, select Add, then select Save.
+
+If the page won't let you create a key (it says "You do not have permission to create a key in this project") or you have no project, an existing Google Cloud account usually has no default project yet. Open the Dashboard in the left panel, choose Projects, select Import projects, pick a project, then go back to the API Keys page and create the key.
+
+Gemini's free quota is counted per Google Cloud project, not per key, so several keys in the same project share one quota. Limits differ between models, change over time and are not guaranteed by Google; daily limits reset at midnight Pacific time. See your current limits on the rate limit page in Google AI Studio. If the Google page shows a key as Blocked (keys that go unused for long are blocked), create a new key.
+
+**Groq**
+
+1. Select Get a key on the Groq card, or open [console.groq.com/keys](https://console.groq.com/keys).
+2. Sign in or create a Groq account if the page asks you to. If the account belongs to a team, only the team owner or a member with the developer role can create keys.
+3. Select Create API Key, follow the steps on the page, then copy the key.
+4. Back in OverSub, paste the key into Groq keys, select Add, then select Save.
+
+Groq limits usage per model (requests and tokens per minute and per day), and the free plan has different limits from the Developer plan. See your account's current limits on the Limits page after signing in.
+
+**Keep your key secret**
+
+Treat a key like a password: don't post it online or paste it into screenshots or public files. Anyone who has it can use up your quota. If you think a key has leaked, create a new key on the Google or Groq page, delete the old one there, then select Remove next to the old key under Settings → Translation in OverSub and add the new key.
+
 ## Controller, touch and keyboard
 
 Windows PCs come in many form factors: desktops, laptops, 2-in-1 tablets and handheld gaming PCs. Every screen in OverSub can be controlled completely with a controller, touch, keyboard only, or keyboard and mouse, and you can switch between them at any time. OverSub updates the button hints at the bottom of the screen to match whichever input device you touched last.
