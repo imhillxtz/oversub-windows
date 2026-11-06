@@ -314,7 +314,6 @@ OverSub has no server of its own, collects no usage data and has no ads. Update 
 - `keys.bin`: holds the API keys you entered, encrypted by Windows with DPAPI for your specific Windows user account (keys are never written to logs or shown in full on screen).
 - `lgtv.bin`: holds pairing information for your LG TV (if you use TV subtitles), also encrypted with DPAPI for your Windows account.
 - `settings.json`, `ui-memory.json` and translation memory files: store settings, per-game region profiles, forms of address and translated lines.
-- `supporters.json`: local cache of the supporter thank-you list, downloaded from GitHub when you open the Support window.
 - `voice`: holds the private Python runtime and VieNeu voice models, removable with the Remove voice button under Settings → Voice.
 - `Logs`: holds per-session diagnostic logs. Logs include text read from the game and translations to help troubleshoot bugs, but never contain API keys.
 - `Reports`: holds `.zip` bug report packages created with Send a bug report… (keeps the 5 most recent packages).
@@ -392,10 +391,10 @@ You can also open an [Issue](https://github.com/imhillxtz/oversub-windows/issues
 
 OverSub is free for everyone. If you find the app useful, you can buy me a coffee at [paypal.me/ngochieuit](https://paypal.me/ngochieuit), or select Support in the main window (or Support in the Support OverSub card under Settings → General) to open the Support window right inside the app:
 
-- Vietnam · VietQR: pick 20,000₫, 50,000₫, 100,000₫ or enter any amount, then scan the QR code with a banking app, MoMo or ZaloPay (recipient `TRINH NGOC HIEU`, MoMo wallet, message `OverSub`). You can type your name into the name box so it is included in the transfer message and listed on the thank-you board in the app.
+- Vietnam · VietQR: pick 20,000₫, 50,000₫, 100,000₫ or enter any amount, then scan the QR code with a banking app, MoMo or ZaloPay (recipient `TRINH NGOC HIEU`, MoMo wallet, message `OverSub`). You can type your name into the name box so it is included in the transfer message.
 - International · PayPal: pick $3, $5, $10 or enter any amount, then select Open PayPal to open `paypal.me/ngochieuit`.
 
-The Support window includes a thank-you board for supporters (hidden when there are no names yet) and the I've already supported (stop reminders) checkbox. When your total translated lines pass 300, 1,000, 3,000 and 10,000, OverSub shows a thank-you note with a Support button when opening the app (once per milestone, never while you are playing; check I've already supported (stop reminders) to turn these reminders off completely). Starring this repository or recommending OverSub to a friend is another way to support it.
+The Support window includes the I've already supported (stop reminders) checkbox. When your total translated lines pass 300, 1,000, 3,000 and 10,000, OverSub shows a thank-you note with a Support button when opening the app (once per milestone, never while you are playing; check I've already supported (stop reminders) to turn these reminders off completely). Starring this repository or recommending OverSub to a friend is another way to support it.
 
 ## Other platforms
 

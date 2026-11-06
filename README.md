@@ -314,7 +314,6 @@ OverSub không có máy chủ riêng, không thu thập dữ liệu sử dụng 
 - `keys.bin`: chứa key API bạn đã nhập, được Windows mã hoá bằng DPAPI theo đúng tài khoản người dùng Windows của bạn (không bao giờ ghi key ra nhật ký hay hiện nguyên key trên màn hình).
 - `lgtv.bin`: chứa thông tin ghép nối với TV LG (nếu bạn dùng tính năng phụ đề trên TV), cũng được mã hoá bằng DPAPI theo tài khoản Windows.
 - `settings.json`, `ui-memory.json` và các tệp trí nhớ dịch: lưu cài đặt, hồ sơ vùng chọn của từng game, xưng hô và các câu đã dịch.
-- `supporters.json`: bản nhớ trên máy của bảng cảm ơn, tải từ GitHub khi bạn mở cửa sổ Ủng hộ.
 - `voice`: chứa bản Python riêng và model giọng đọc VieNeu, xoá được bằng nút Gỡ giọng đọc ở Cài đặt → Giọng đọc.
 - `Logs`: chứa nhật ký chẩn đoán theo từng phiên chạy. Nhật ký có ghi chữ đọc được từ game và bản dịch để phục vụ tìm lỗi, nhưng không bao giờ ghi key API.
 - `Reports`: chứa các gói báo lỗi `.zip` tạo từ nút Gửi báo lỗi… (giữ 5 gói mới nhất).
@@ -392,10 +391,10 @@ Bạn cũng có thể mở trực tiếp một [Issue](https://github.com/imhill
 
 OverSub miễn phí cho mọi người. Nếu thấy app hữu ích, bạn có thể mời mình một ly cà phê qua [paypal.me/ngochieuit](https://paypal.me/ngochieuit), hoặc bấm nút Ủng hộ ở cửa sổ chính (hay bấm Ủng hộ ở thẻ Ủng hộ OverSub trong Cài đặt → Chung) để mở cửa sổ Ủng hộ ngay trong app:
 
-- Trong nước · VietQR: chọn mức 20.000đ, 50.000đ, 100.000đ hoặc tự nhập số tiền, rồi quét mã bằng ứng dụng ngân hàng, MoMo hay ZaloPay (người nhận `TRINH NGOC HIEU`, ví MoMo, nội dung `OverSub`). Bạn có thể nhập tên vào ô tên để ghi kèm trong nội dung chuyển khoản và hiện trong bảng cảm ơn của app.
+- Trong nước · VietQR: chọn mức 20.000đ, 50.000đ, 100.000đ hoặc tự nhập số tiền, rồi quét mã bằng ứng dụng ngân hàng, MoMo hay ZaloPay (người nhận `TRINH NGOC HIEU`, ví MoMo, nội dung `OverSub`). Bạn có thể nhập tên vào ô tên để ghi kèm trong nội dung chuyển khoản.
 - Quốc tế · PayPal: chọn mức 3, 5, 10 đô la hoặc tự nhập số tiền, rồi bấm Mở PayPal để mở trang `paypal.me/ngochieuit`.
 
-Cửa sổ Ủng hộ có bảng cảm ơn những người đã ủng hộ (tự ẩn khi chưa có tên nào) và ô Mình đã ủng hộ rồi. Khi tổng số câu đã dịch vượt các mốc 300, 1.000, 3.000 và 10.000 câu, OverSub hiện một lời cảm ơn kèm nút Ủng hộ lúc vừa mở app (mỗi mốc một lần, không bao giờ hiện khi đang chơi; đánh dấu ô Mình đã ủng hộ rồi để tắt hẳn các lời nhắc này). Gắn sao cho kho này hoặc giới thiệu OverSub với bạn bè cũng là một cách ủng hộ.
+Cửa sổ Ủng hộ có ô Mình đã ủng hộ rồi. Khi tổng số câu đã dịch vượt các mốc 300, 1.000, 3.000 và 10.000 câu, OverSub hiện một lời cảm ơn kèm nút Ủng hộ lúc vừa mở app (mỗi mốc một lần, không bao giờ hiện khi đang chơi; đánh dấu ô Mình đã ủng hộ rồi để tắt hẳn các lời nhắc này). Gắn sao cho kho này hoặc giới thiệu OverSub với bạn bè cũng là một cách ủng hộ.
 
 ## Nền tảng khác
 
