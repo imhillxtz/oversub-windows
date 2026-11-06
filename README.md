@@ -89,7 +89,7 @@ Nếu TV của bạn là TV LG chạy webOS và nối cùng mạng Wi-Fi với m
 
 - Windows 11 trên máy x64: PC để bàn, laptop, máy 2 trong 1 hay máy chơi game cầm tay. Windows 10 bản 2004 trở lên cài được nhưng chưa được thử.
 - Key API của Gemini hoặc Groq để dịch. Cả hai đều có gói miễn phí, xem mục [Dịch vụ dịch và key API](#dịch-vụ-dịch-và-key-api).
-- Python 3.12 và gói `vieneu` cho giọng đọc tiếng Việt. Bộ cài không kèm phần này; cách cài ở mục [Giọng đọc tiếng Việt và cách cài Python](#giọng-đọc-tiếng-việt-và-cách-cài-python). Chưa cài thì app vẫn dịch và hiện chữ, chỉ không đọc.
+- Giọng đọc tiếng Việt VieNeu cài ngay trong app, cần mạng một lần và khoảng 1,5 GB dung lượng trống lúc cài; xem mục [Giọng đọc tiếng Việt](#giọng-đọc-tiếng-việt). Khi chưa cài, OverSub tạm đọc bằng giọng tiếng Việt của Windows nếu máy có, không thì chỉ hiện chữ.
 - Hai cách chơi qua capture card cần một capture card kiểu webcam (UVC) có luồng MJPEG 1080p. OverSub được thử với capture card Hagibis.
 - Gói đọc chữ của Windows cho ngôn ngữ trong game. Tiếng Anh thường có sẵn; với ngôn ngữ khác, app sẽ nhắc cài ở Settings → Time & language → Language & region. Trên Windows 11, nếu máy có Snipping Tool, OverSub tự dùng bộ đọc chữ của Snipping Tool (OneOCR) để đọc chính xác hơn với chữ nhỏ.
 
@@ -98,7 +98,7 @@ Bộ cài đã kèm .NET, nên không cần cài .NET riêng.
 ## Cài đặt
 
 1. Vào trang [Releases](https://github.com/imhillxtz/oversub-windows/releases), tải tệp `OverSub-Setup-x.y.z.exe` ở mục Assets.
-2. Mở tệp vừa tải. Bộ cài chưa có chữ ký số nên Windows SmartScreen sẽ hiện "Windows protected your PC". Bấm More info, kiểm tra tên tệp là `OverSub-Setup-x.y.z.exe`, rồi bấm Run anyway. Trình duyệt cũng có thể báo tệp "không thường được tải về"; chọn Giữ lại (Keep).
+2. Mở tệp vừa tải. Bộ cài chưa có chữ ký số nên Windows SmartScreen sẽ hiện "Windows protected your PC". Bấm More info, kiểm tra tên tệp là `OverSub-Setup-x.y.z.exe`, rồi bấm Run anyway. Nếu Windows của bạn dùng tiếng Việt, các nút này hiện bằng tiếng Việt, ở cùng vị trí. Trình duyệt cũng có thể báo tệp "không thường được tải về"; chọn Giữ lại (Keep).
 3. Làm theo các bước của bộ cài. OverSub được cài cho tài khoản Windows của bạn vào `%LOCALAPPDATA%\Programs\OverSub`, không cần quyền quản trị, và có lối tắt trong Start menu.
 
 ### Kiểm tra mã SHA-256
@@ -117,11 +117,14 @@ OverSub chưa tự cập nhật. Để nhận thông báo khi có bản mới, b
 
 ## Bắt đầu trong 5 phút
 
-1. Thêm key dịch: lấy key miễn phí ở [Google AI Studio](https://aistudio.google.com/apikey) hoặc [Groq](https://console.groq.com/keys). Mở OverSub, bấm Cài đặt, ở tab Dịch vụ dịch dán key vào ô Key Gemini hoặc Key Groq, bấm Thêm rồi bấm Lưu.
-2. Chọn cách chơi: ở màn hình mở đầu, chọn Chơi game trên máy này, Xem và chơi trên máy này hoặc Chơi trên TV.
-3. Chọn ngôn ngữ và thể loại game: ở thẻ Game đang chơi trên cửa sổ chính, bấm Đổi để chọn ngôn ngữ chữ trong game (tiếng Anh, Nhật, Hàn, Trung...) và thể loại phù hợp với bối cảnh game.
-4. Chọn vùng phụ đề: mở game tới đoạn có lời thoại. Nếu chơi qua capture card, bấm Chọn vùng trên cửa sổ chính; nếu chơi game trên máy, bấm Bắt đầu, vào game rồi giữ View và bấm X (hoặc bấm Ctrl Alt R). Kéo khung trắng bao quanh hộp thoại của game (bao cả nhãn tên nhân vật nếu có) rồi bấm Lưu vùng.
-5. Bấm Bắt đầu (nếu chưa chạy) và bật hoặc tắt Phụ đề, Giọng đọc, Dịch màn hình ngay trên cửa sổ chính tuỳ nhu cầu.
+Lần mở đầu tiên trên máy mới, OverSub mở cửa sổ Hướng dẫn lần đầu gồm 4 bước: chọn Game thường dùng tiếng và Dịch sang, thêm key dịch (có nút Mở trang lấy key, Dán, Thêm và ô Dùng Google Dịch khi chưa có key), cài giọng đọc tiếng Việt, và xem cách chọn vùng phụ đề. Bạn chuyển bước bằng nút Tiếp, Quay lại, Bỏ qua hướng dẫn hoặc Bắt đầu dùng ở bước cuối (trên tay cầm: Menu sang bước tiếp, B quay lại). Có thể mở lại bất cứ lúc nào ở Cài đặt → Chung → Hướng dẫn lần đầu → Mở hướng dẫn.
+
+1. Thêm key dịch: bấm Mở trang lấy key trong hướng dẫn lần đầu (hoặc nút Lấy key ở Cài đặt → Dịch vụ dịch) để lấy key miễn phí tại [Google AI Studio](https://aistudio.google.com/apikey) hoặc [Groq](https://console.groq.com/keys). Sao chép key, dán vào ô Key Gemini hoặc Key Groq (ở hướng dẫn lần đầu có thêm nút Dán), bấm Thêm rồi bấm Lưu.
+2. Cài giọng đọc: vào Cài đặt → Giọng đọc, bấm Cài giọng đọc ở đầu trang. Cài xong giọng tự bật.
+3. Chọn cách chơi: ở màn hình mở đầu, chọn Chơi game trên máy này, Xem và chơi trên máy này hoặc Chơi trên TV.
+4. Chọn ngôn ngữ và thể loại game: ở thẻ Game đang chơi trên cửa sổ chính, bấm Đổi để chọn ngôn ngữ chữ trong game (tiếng Anh, Nhật, Hàn, Trung...) và thể loại phù hợp với bối cảnh game (mặc định trên máy mới là Tự động; máy nâng cấp từ bản cũ giữ nguyên thể loại đã chọn).
+5. Chọn vùng phụ đề: mở game tới đoạn có lời thoại. Nếu chơi qua capture card, bấm Chọn vùng trên cửa sổ chính; nếu chơi game trên máy, bấm Bắt đầu, vào game rồi giữ View và bấm X (hoặc bấm Ctrl Alt R). Kéo khung trắng bao quanh hộp thoại của game (bao cả nhãn tên nhân vật nếu có) rồi bấm Lưu vùng.
+6. Bấm Bắt đầu (nếu chưa chạy) và bật hoặc tắt Phụ đề, Giọng đọc, Dịch màn hình ngay trên cửa sổ chính tuỳ nhu cầu.
 
 ## Hướng dẫn chi tiết
 
@@ -149,34 +152,26 @@ Nếu không muốn đè lên hộp thoại gốc hoặc muốn đặt phụ đ�
 - Chạm hoặc rê chuột vào dải Phụ đề nổi để hiện thanh nút nhỏ ở góc phải và bốn ô kéo ở bốn góc: kéo dải để dời vị trí, kéo ngang góc để đổi bề rộng, kéo dọc góc để đổi cỡ chữ. Các nút trên dải gồm chuyển giữa chế độ Một dòng và Nhiều dòng, đổi nền (tối, mờ, trong suốt có bóng chữ), giảm hoặc tăng cỡ chữ (A−, A+) và đóng dải.
 - Dùng tay cầm: giữ View rồi bấm RT trong game (hoặc bấm nút Chỉnh phụ đề nổi trên thanh nút toàn màn hình) để vào chế độ chỉnh bằng tay cầm. Khi đó dùng cần trái và D-pad để dời chỗ, cần phải để đổi bề rộng, LB và RB để đổi cỡ chữ, X để đổi một dòng hay nhiều dòng, Y để đổi nền, A để lưu và B để huỷ.
 
-### Giọng đọc tiếng Việt và cách cài Python
+### Giọng đọc tiếng Việt
 
-Giọng Việt dùng [VieNeu-TTS](https://github.com/pnnbao97/VieNeu-TTS) (giấy phép Apache 2.0), chạy ngay trên máy qua Python. Bạn chỉ cần cài một lần, cần mạng và khoảng 1 GB dung lượng trống cho gói Python cùng model giọng:
+Giọng Việt dùng [VieNeu-TTS](https://github.com/pnnbao97/VieNeu-TTS) (giấy phép Apache 2.0), chạy ngay trên máy và cài trực tiếp trong OverSub mà không cần tự cài Python hay gõ lệnh:
 
-1. Mở Terminal (chuột phải nút Start → Terminal) và cài Python 3.12:
-
-   ```powershell
-   winget install -e --id Python.Python.3.12 --scope user
-   ```
-
-   Nếu tự tải ở [python.org](https://www.python.org/downloads/windows/), vui lòng chọn bản "Windows installer (64-bit)" của Python 3.12 và cài với lựa chọn mặc định. Python cài từ Microsoft Store không dùng được.
-
-2. Cài gói giọng đọc:
-
-   ```powershell
-   & "$env:LOCALAPPDATA\Programs\Python\Python312\python.exe" -m pip install vieneu
-   ```
-
-3. Mở lại OverSub. Lần đầu, VieNeu tải model giọng từ Hugging Face nên cần chờ lâu hơn; những lần sau giọng sẵn sàng sau vài giây.
+- Mở Cài đặt → Giọng đọc (hoặc ở bước 3 của Hướng dẫn lần đầu), tại khối cài giọng ở đầu trang bấm Cài giọng đọc. App tự tải bản Python riêng (khoảng 11 MB từ python.org, có kiểm mã SHA-256), cài thư viện bằng pip từ pypi.org rồi tải model giọng từ huggingface.co.
+- Thanh tiến độ hiện các bước cài. Có nút Huỷ để dừng (phần đã tải được giữ lại, bấm cài lại sẽ làm tiếp); nếu lỗi mạng thì app báo lý do và có nút Thử lại. Việc cài chạy ở mức ưu tiên thấp để ít ảnh hưởng tới game, và đóng cửa sổ Cài đặt không dừng việc cài.
+- Bộ giọng Nano (mặc định) tải khoảng 0,4 GB một lần, chiếm khoảng 0,5 GB trên ổ đĩa và cần còn trống khoảng 1,5 GB lúc cài. Đo trên máy ROG Ally: cài thư viện khoảng 40 giây, tải model Nano khoảng 16 giây (phụ thuộc mạng). Cài xong giọng tự bật, không cần mở lại app. Nếu lần đầu tải model qua mạng chậm khiến giọng nạp lâu hơn thường, app chờ tối đa 20 phút và tự bật khi xong.
+- Mọi thứ nằm trong thư mục riêng `%LOCALAPPDATA%\OverSub\voice`, không đụng tới Python hay gói nào khác trên máy. Để gỡ, bấm nút Gỡ giọng đọc trong cùng khối (bấm hai lần để xác nhận) để xoá thư mục này.
+- Khi chưa cài giọng VieNeu (hoặc lúc giọng chưa lên), OverSub tạm đọc bằng giọng tiếng Việt của Windows nếu máy có (ví dụ Microsoft An) và báo trên cửa sổ chính; máy không có giọng tiếng Việt của Windows thì chỉ hiện chữ. Khi VieNeu sẵn sàng, app tự chuyển sang VieNeu.
 
 Ở tab Giọng đọc trong Cài đặt, bạn có thể chỉnh:
 
-- Bộ giọng VieNeu: Nano (nhanh, đọc sau khoảng 1,5 giây, mặc định) hoặc Turbo (tự nhiên hơn, chờ khoảng 2 đến 4 giây mỗi câu). Mỗi bộ có nhiều giọng nam và nữ để chọn ở mục Giọng, kèm nút Nghe thử. Nếu đổi giữa Nano và Turbo, vui lòng bấm Lưu để nạp bộ giọng mới rồi mở lại Cài đặt để nghe thử.
+- Bộ giọng VieNeu: Nano (nhanh, đọc sau khoảng 1,5 giây, mặc định) hoặc Turbo (tự nhiên hơn, chờ khoảng 2 đến 4 giây mỗi câu). Bộ Turbo cần tải thêm khoảng 0,6 GB bằng nút Tải bộ Turbo khi chọn Turbo ở ô Bộ giọng VieNeu (hoặc nút Tải bộ Nano nếu cần tải bộ Nano). Mỗi bộ có nhiều giọng nam và nữ để chọn ở mục Giọng, kèm nút Nghe thử. Nếu đổi giữa Nano và Turbo, vui lòng bấm Lưu để nạp bộ giọng mới rồi mở lại Cài đặt để nghe thử.
 - Loa phát giọng: mặc định để Tự chọn, app sẽ phát ra loa mặc định của Windows nhưng tự tránh cổng âm thanh của capture card và các loa ảo như Steam Streaming để không bị mất tiếng. Bạn cũng có thể chọn cố định một loa hoặc tai nghe trong danh sách.
 - Âm lượng giọng đọc: kéo từ 0% đến 200%. Mỗi câu đọc ra đều được cân về cùng độ to; khi kéo trên 100%, giọng được khuếch đại thêm nhưng giữ đỉnh âm không bị rè.
 - Khi dịch sang ngôn ngữ khác tiếng Việt, OverSub tự chuyển sang giọng đọc có sẵn của Windows cho ngôn ngữ đó.
 
 Trong lúc chơi, khi câu thoại mới xuất hiện, câu tiếp theo được chuẩn bị sẵn trong lúc câu hiện tại đang phát. Nếu hội thoại diễn ra dồn dập, giọng đọc tự tăng tốc nhẹ để bắt kịp nhịp câu trên màn hình.
+
+Dùng Python có sẵn: máy nào đã tự cài Python 3.12 và gói `vieneu` theo hướng dẫn cũ thì app vẫn dùng được như trước (app ưu tiên bản riêng của OverSub nếu đã cài, không thì dùng Python có sẵn).
 
 ### Dịch màn hình và chế độ Chỉ chữ
 
@@ -241,10 +236,10 @@ Bấm nút Lịch sử trên cửa sổ chính (hoặc trên thanh nút của m�
 
 ## Dịch vụ dịch và key API
 
-Để dịch bằng AI, bạn cần ít nhất một key API của Gemini hoặc Groq. Cả hai đều cung cấp gói miễn phí:
+Để dịch bằng AI, bạn cần ít nhất một key API của Gemini hoặc Groq. Bạn có thể thêm key ngay ở bước 2 của Hướng dẫn lần đầu (bấm Mở trang lấy key, rồi dùng nút Dán và Thêm, hoặc bật ô Dùng Google Dịch khi chưa có key) hay thêm trong Cài đặt. Cả hai dịch vụ đều cung cấp gói miễn phí:
 
-1. Lấy key miễn phí ở [Google AI Studio](https://aistudio.google.com/apikey) (Gemini) hoặc [Groq](https://console.groq.com/keys).
-2. Mở OverSub, bấm Cài đặt, chọn tab Dịch vụ dịch.
+1. Mở OverSub, bấm Cài đặt, chọn tab Dịch vụ dịch.
+2. Bấm nút Lấy key trên thẻ Gemini hoặc Groq để mở trình duyệt tới trang tạo key miễn phí ở [Google AI Studio](https://aistudio.google.com/apikey) (Gemini) hoặc [Groq](https://console.groq.com/keys).
 3. Dán key vào ô Key Gemini hoặc Key Groq rồi bấm Thêm. Bạn có thể thêm nhiều key. App sẽ dịch thử một câu ngắn để kiểm tra và chỉ thêm khi key hoạt động.
 4. Bấm Lưu.
 
@@ -254,7 +249,7 @@ Bấm nút Lịch sử trên cửa sổ chính (hoặc trên thanh nút của m�
 |---|---|
 | Gemini | Dịch tự nhiên và giữ văn phong tốt nhất trong nhóm miễn phí. Hạn mức miễn phí tính theo dự án Google Cloud, nên nhiều key tạo trong cùng một dự án sẽ dùng chung hạn mức; muốn tăng hạn mức cần tạo key ở các dự án khác nhau. |
 | Groq | Tốc độ phản hồi rất nhanh. Đóng vai trò dự phòng tức thì khi Gemini bận, trả lời chậm quá 2,5 giây hoặc hết lượt. |
-| Google Dịch (tạm) | Không cần key. Khi bật ô Hiện bản Google Dịch trong lúc chờ AI, nếu bản AI chưa về sau 1,5 giây thì câu thoại hiện tạm bản Google Dịch rồi tự thay bằng bản AI khi có (giọng đọc vẫn chỉ đọc bản AI). Khi mọi dịch vụ AI đều lỗi hoặc hết lượt, OverSub dùng bản Google Dịch để việc chơi không bị đứt quãng. |
+| Google Dịch (tạm) | Không cần key. Khi chưa có key nào, OverSub dịch bằng Google Dịch và dòng trạng thái ở cửa sổ chính báo rõ "Chưa có key dịch nên đang dùng Google Dịch". Khi bật ô Hiện bản Google Dịch trong lúc chờ AI, nếu bản AI chưa về sau 1,5 giây thì câu thoại hiện tạm bản Google Dịch rồi tự thay bằng bản AI khi có (giọng đọc vẫn chỉ đọc bản AI). Khi mọi dịch vụ AI đều lỗi hoặc hết lượt, OverSub dùng bản Google Dịch để việc chơi không bị đứt quãng. |
 
 Bạn nên thêm cả key Gemini và key Groq để dự phòng cho nhau. Danh sách key đã lưu có chấm màu và dòng trạng thái của từng key: đang hoạt động kèm số câu đã dịch hôm nay, tạm nghỉ vì hết lượt kèm lúc dùng lại được, hoặc lỗi lần gần nhất. Khi tất cả các key đang tạm nghỉ vì chạm giới hạn lượt theo phút, câu thoại sẽ tự chờ vài giây tới khi key mở lại thay vì bỏ sót câu, và Dịch màn hình tự nhường lượt key cho câu thoại.
 
@@ -303,7 +298,7 @@ Các màn hình của ứng dụng Xbox, Armoury Crate, Steam, Playnite và các
 
 ## Quyền riêng tư và dữ liệu
 
-Hình chụp màn hình và luồng video từ capture card được xử lý hoàn toàn trên máy của bạn, không bao giờ gửi đi đâu. Việc nhận dạng chữ (OneOCR và Windows OCR) và giọng đọc tiếng Việt VieNeu đều chạy ngay trên máy.
+Hình chụp màn hình và luồng video từ capture card được xử lý hoàn toàn trên máy của bạn, không bao giờ gửi đi đâu. Việc nhận dạng chữ (OneOCR và Windows OCR) và giọng đọc tiếng Việt VieNeu đều chạy ngay trên máy. Khi bạn bấm Cài giọng đọc, app tải bản Python riêng, thư viện và model giọng từ python.org, pypi.org và huggingface.co (chỉ kết nối lúc cài, không gửi dữ liệu của bạn đi).
 
 Khi dịch, chỉ có văn bản chữ đọc được mới gửi tới dịch vụ dịch:
 
@@ -315,6 +310,7 @@ OverSub không có máy chủ riêng, không thu thập dữ liệu sử dụng 
 - `keys.bin`: chứa key API bạn đã nhập, được Windows mã hoá bằng DPAPI theo đúng tài khoản người dùng Windows của bạn (không bao giờ ghi key ra nhật ký hay hiện nguyên key trên màn hình).
 - `lgtv.bin`: chứa thông tin ghép nối với TV LG (nếu bạn dùng tính năng phụ đề trên TV), cũng được mã hoá bằng DPAPI theo tài khoản Windows.
 - `settings.json`, `ui-memory.json` và các tệp trí nhớ dịch: lưu cài đặt, hồ sơ vùng chọn của từng game, xưng hô và các câu đã dịch.
+- `voice`: chứa bản Python riêng và model giọng đọc VieNeu, xoá được bằng nút Gỡ giọng đọc ở Cài đặt → Giọng đọc.
 - `Logs`: chứa nhật ký chẩn đoán theo từng phiên chạy. Nhật ký có ghi chữ đọc được từ game và bản dịch để phục vụ tìm lỗi, nhưng không bao giờ ghi key API.
 
 ## Câu hỏi thường gặp và xử lý sự cố
@@ -322,14 +318,14 @@ OverSub không có máy chủ riêng, không thu thập dữ liệu sử dụng 
 <details>
 <summary>Windows SmartScreen hoặc trình duyệt chặn không cho mở bộ cài</summary>
 
-Bộ cài hiện chưa có chứng chỉ chữ ký số trả phí nên Windows SmartScreen sẽ hiện bảng "Windows protected your PC" ở lần mở đầu tiên. Vui lòng bấm More info, kiểm tra đúng tên tệp `OverSub-Setup-x.y.z.exe` tải từ trang Releases của kho này, rồi bấm Run anyway. Nếu trình duyệt báo tệp ít được tải về, hãy bấm vào biểu tượng ba chấm cạnh tệp tải về và chọn Giữ lại (Keep). Bạn cũng có thể đối chiếu mã SHA-256 theo hướng dẫn ở mục [Cài đặt](#cài-đặt).
+Bộ cài hiện chưa có chứng chỉ chữ ký số trả phí nên Windows SmartScreen sẽ hiện bảng "Windows protected your PC" ở lần mở đầu tiên. Vui lòng bấm More info, kiểm tra đúng tên tệp `OverSub-Setup-x.y.z.exe` tải từ trang Releases của kho này, rồi bấm Run anyway. Nếu Windows của bạn dùng tiếng Việt, các nút này hiện bằng tiếng Việt, ở cùng vị trí. Nếu trình duyệt báo tệp ít được tải về, hãy bấm vào biểu tượng ba chấm cạnh tệp tải về và chọn Giữ lại (Keep). Bạn cũng có thể đối chiếu mã SHA-256 theo hướng dẫn ở mục [Cài đặt](#cài-đặt).
 </details>
 
 <details>
 <summary>Giọng đọc tiếng Việt không lên, hoặc báo đang chạy nhưng không nghe thấy tiếng</summary>
 
-- Kiểm tra xem bạn đã cài Python 3.12 (bản 64-bit tiêu chuẩn từ winget hoặc python.org, không phải bản từ Microsoft Store) và gói `vieneu` chưa. Ở Cài đặt → Giọng đọc, dòng chữ dưới mục Giọng sẽ báo rõ lý do nếu chưa tìm thấy Python hoặc thiếu gói `vieneu`.
-- Trong khoảng 7 giây đầu sau khi vừa mở OverSub, hoặc ở lần chạy đầu tiên khi VieNeu đang tải model giọng từ Hugging Face về máy, giọng đọc chưa sẵn sàng ngay nên vài câu đầu có thể chỉ hiện chữ. Hãy mở Cài đặt → Giọng đọc và bấm Nghe thử để kiểm tra.
+- Mở Cài đặt → Giọng đọc và xem dòng trạng thái ở khối cài giọng đầu trang. Nếu chưa cài, hãy bấm Cài giọng đọc; nếu lần cài trước bị ngắt vì lỗi mạng, dòng trạng thái sẽ báo lý do và bạn có thể bấm Thử lại để cài tiếp.
+- Trong khoảng 7 giây đầu sau khi vừa mở OverSub, hoặc ở lần đầu tải model qua mạng chậm, giọng VieNeu đang nạp nên app tạm đọc bằng giọng tiếng Việt của Windows (nếu máy có) hoặc chỉ hiện chữ. Nếu giọng nạp lâu hơn thường, app chờ tối đa 20 phút và tự bật khi xong mà không cần đóng mở lại. Bạn có thể bấm Nghe thử ở Cài đặt → Giọng đọc để kiểm tra.
 - Nếu app báo đang phát giọng đọc mà bạn không nghe thấy gì, rất có thể khi cắm capture card, Windows đã tự chuyển loa mặc định sang cổng âm thanh của capture card hoặc một loa ảo. Vào Cài đặt → Giọng đọc → Loa phát giọng, chọn đúng loa của máy hoặc tai nghe bạn đang đeo rồi bấm Lưu.
 </details>
 
@@ -367,7 +363,7 @@ Bộ cài hiện chưa có chứng chỉ chữ ký số trả phí nên Windows 
 <details>
 <summary>Cách gỡ cài đặt và xoá toàn bộ dữ liệu</summary>
 
-Vào Windows Settings → Apps → Installed apps, tìm OverSub và bấm Uninstall. Mặc định thư mục `%LOCALAPPDATA%\OverSub` (chứa cài đặt, key đã mã hoá, hồ sơ game, trí nhớ dịch và nhật ký) được giữ lại để nếu bạn cài bản mới thì không phải thiết lập lại. Nếu muốn xoá sạch mọi dữ liệu của OverSub khỏi máy, hãy mở File Explorer, dán `%LOCALAPPDATA%\OverSub` vào thanh địa chỉ và xoá thư mục này. Python 3.12 và gói `vieneu` (nếu bạn đã cài) được gỡ riêng trong Installed apps hoặc qua `pip uninstall vieneu`.
+Vào Windows Settings → Apps → Installed apps, tìm OverSub và bấm Uninstall. Mặc định thư mục `%LOCALAPPDATA%\OverSub` (chứa cài đặt, key đã mã hoá, hồ sơ game, trí nhớ dịch, thư mục `voice` và nhật ký) được giữ lại để nếu bạn cài bản mới thì không phải thiết lập lại. Giọng đọc cài trong app nằm trong thư mục `voice`, có thể gỡ riêng bằng nút Gỡ giọng đọc ở Cài đặt → Giọng đọc hoặc xoá cùng cả thư mục dữ liệu. Nếu muốn xoá sạch mọi dữ liệu của OverSub khỏi máy, hãy mở File Explorer, dán `%LOCALAPPDATA%\OverSub` vào thanh địa chỉ và xoá thư mục này. Nếu trước đây bạn từng tự cài Python 3.12 và gói `vieneu` từ bản cũ thì gỡ riêng trong Installed apps.
 </details>
 
 ## Giới hạn hiện tại
@@ -375,7 +371,7 @@ Vào Windows Settings → Apps → Installed apps, tìm OverSub và bấm Uninst
 - Bộ cài chưa có chữ ký số, nên Windows SmartScreen cảnh báo ở lần mở đầu tiên.
 - Chưa có bản dựng riêng cho máy Windows dùng chip ARM.
 - Chưa có tính năng tự cập nhật trong ứng dụng.
-- Giọng đọc tiếng Việt cần cài Python 3.12 và gói `vieneu` riêng. Trong khoảng 7 giây đầu sau khi mở app, lúc giọng đọc đang nạp model, câu thoại có thể chỉ hiện chữ mà chưa được đọc thành tiếng.
+- Giọng đọc tiếng Việt lần đầu cài cần tải khoảng 0,4 GB. Trong khoảng 7 giây đầu sau khi mở app, lúc giọng đọc đang nạp model, câu thoại có thể chỉ hiện chữ mà chưa được đọc bằng giọng VieNeu.
 - Khi chơi game chạy trực tiếp trên máy ở chế độ Exclusive Fullscreen (toàn màn hình độc quyền kiểu cũ của một số game DirectX 9 hoặc DirectX 11), lớp cửa sổ nổi của Windows có thể không hiện đè lên trên game được; khi đó vui lòng đổi chế độ hiển thị trong cài đặt của game sang Borderless Windowed (Cửa sổ không viền) hoặc Windowed.
 - Game tiếng Nhật, Hàn, Trung mới được thử với phụ đề hội thoại; Dịch màn hình và tiếng Trung phồn thể chưa được thử.
 - Bản này mới được thử kỹ trên máy cầm tay ROG Ally với capture card Hagibis. Nếu OverSub chạy chưa đúng trên máy hoặc thiết bị của bạn, vui lòng báo qua Issue.

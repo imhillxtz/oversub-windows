@@ -89,7 +89,7 @@ If your TV is an LG TV running webOS on the same Wi-Fi network as your Windows P
 
 - Windows 11 on an x64 PC: a desktop, laptop, 2-in-1 or handheld gaming PC. Windows 10 version 2004 or later can install it, but it hasn't been tested there.
 - A Gemini or Groq API key for translation. Both have free tiers; see [Translation services and API keys](#translation-services-and-api-keys).
-- Python 3.12 and the `vieneu` package for the Vietnamese voice. The installer doesn't include them; see [Vietnamese voice and installing Python](#vietnamese-voice-and-installing-python). Without them the app still translates and shows text, it just doesn't read aloud.
+- The VieNeu Vietnamese voice is installed right inside the app, needing an internet connection once and about 1.5 GB of free space during installation; see [Vietnamese voice](#vietnamese-voice). Until it is installed, OverSub temporarily speaks with the built-in Windows Vietnamese voice if your PC has one, or shows text only.
 - The two capture card modes need a webcam-class (UVC) capture card with a 1080p MJPEG stream. OverSub has been tested with a Hagibis capture card.
 - The Windows text recognition pack for the game's language. English is usually installed already; for other languages the app prompts you to install it under Settings → Time & language → Language & region. On Windows 11, if Snipping Tool is installed, OverSub automatically uses Snipping Tool's text reader (OneOCR) to read small text more accurately.
 
@@ -98,7 +98,7 @@ The installer includes .NET, so you don't need to install .NET separately.
 ## Installing
 
 1. Go to [Releases](https://github.com/imhillxtz/oversub-windows/releases) and download `OverSub-Setup-x.y.z.exe` under Assets.
-2. Open the downloaded file. The installer isn't digitally signed yet, so Windows SmartScreen shows "Windows protected your PC". Click More info, check that the file name is `OverSub-Setup-x.y.z.exe`, then click Run anyway. Your browser may also say the file isn't commonly downloaded; choose Keep.
+2. Open the downloaded file. The installer isn't digitally signed yet, so Windows SmartScreen shows "Windows protected your PC". Click More info, check that the file name is `OverSub-Setup-x.y.z.exe`, then click Run anyway. If Windows is set to Vietnamese, these buttons appear in Vietnamese in the same place. Your browser may also say the file isn't commonly downloaded; choose Keep.
 3. Follow the installer steps. OverSub installs for your Windows account into `%LOCALAPPDATA%\Programs\OverSub`, needs no administrator rights, and adds a Start menu shortcut.
 
 ### Verifying the SHA-256 checksum
@@ -117,11 +117,14 @@ OverSub doesn't update itself yet. To be notified when a new version comes out, 
 
 ## Getting started in 5 minutes
 
-1. Add a translation key: get a free key at [Google AI Studio](https://aistudio.google.com/apikey) or [Groq](https://console.groq.com/keys). Open OverSub, select Settings, and on the Translation tab paste the key into Gemini keys or Groq keys, select Add, then select Save.
-2. Choose how you play: on the opening screen, choose Play games on this PC, Watch and play on this PC, or Play on the TV.
-3. Choose the game's language and genre: in the Current game card on the main window, select Change to pick the in-game text language (English, Japanese, Korean, Chinese and others) and the genre that fits the game's setting.
-4. Select the subtitle region: open the game to a scene with dialogue. If playing through a capture card, select Select regions in the main window; if playing a game on this PC, select Start, switch to the game, then hold View and press X (or press Ctrl Alt R). Drag the white box around the game's dialogue box (including the speaker name tag if there is one) and select Save regions.
-5. Select Start (if not already running) and turn Subtitles, Voice or Screen translation on or off right in the main window as needed.
+The first time you open OverSub on a new PC, it opens the 4-step First-run guide: pick the game's usual language and the language to translate into, add a translation key (with Open the key page, Paste, Add and the Use Google Translate while there is no key checkbox), install the Vietnamese voice, and review how to select the subtitle region. Move through the steps with Next, Back, Skip the guide or Start using OverSub at the final step (on a controller: Menu for next, B for back). You can reopen it anytime under Settings → General → First-run guide → Open the guide.
+
+1. Add a translation key: select Open the key page in the first-run guide (or Get a key under Settings → Translation) to get a free key at [Google AI Studio](https://aistudio.google.com/apikey) or [Groq](https://console.groq.com/keys). Copy the key, paste it into Gemini keys or Groq keys (the first-run guide has a Paste button too), select Add, then select Save.
+2. Install the voice: go to Settings → Voice and select Install voice at the top of the page. Once installed, the voice turns on automatically.
+3. Choose how you play: on the opening screen, choose Play games on this PC, Watch and play on this PC, or Play on the TV.
+4. Choose the game's language and genre: in the Current game card on the main window, select Change to pick the in-game text language (English, Japanese, Korean, Chinese and others) and the genre that fits the game's setting (Automatic by default on a new PC; PCs upgrading from an older version keep their existing choice).
+5. Select the subtitle region: open the game to a scene with dialogue. If playing through a capture card, select Select regions in the main window; if playing a game on this PC, select Start, switch to the game, then hold View and press X (or press Ctrl Alt R). Drag the white box around the game's dialogue box (including the speaker name tag if there is one) and select Save regions.
+6. Select Start (if not already running) and turn Subtitles, Voice or Screen translation on or off right in the main window as needed.
 
 ## Detailed guide
 
@@ -149,34 +152,26 @@ If you prefer not to cover the original dialogue box or want subtitles in a fixe
 - Tap or hover over the Floating subtitles strip to show the small button bar on the right and the four corner handles: drag the strip to move it, drag a corner horizontally to change the width, or drag a corner vertically to change the font size. The buttons on the strip switch between One line and Multiple lines, cycle the background (dark, dim, or clear with text shadow), decrease or increase the font size (A−, A+) and close the strip.
 - With a controller: hold View and press RT in the game (or select Adjust floating on the full-screen control bar) to enter controller adjustment mode. Use the left stick and D-pad to move, the right stick to change the width, LB and RB to change the text size, X to switch between one line and multiple lines, Y to change the background, A to save and B to cancel.
 
-### Vietnamese voice and installing Python
+### Vietnamese voice
 
-The Vietnamese voice uses [VieNeu-TTS](https://github.com/pnnbao97/VieNeu-TTS) (Apache 2.0 license), running locally on your PC through Python. You only need to install it once; it requires an internet connection and about 1 GB of free space for the Python packages and voice model:
+The Vietnamese voice uses [VieNeu-TTS](https://github.com/pnnbao97/VieNeu-TTS) (Apache 2.0 license), running locally on your PC and installed directly inside OverSub without installing Python by hand or typing commands:
 
-1. Open Terminal (right-click Start → Terminal) and install Python 3.12:
-
-   ```powershell
-   winget install -e --id Python.Python.3.12 --scope user
-   ```
-
-   If you download it from [python.org](https://www.python.org/downloads/windows/) yourself, please choose the "Windows installer (64-bit)" of Python 3.12 and install it with the default options. Python from the Microsoft Store doesn't work.
-
-2. Install the voice package:
-
-   ```powershell
-   & "$env:LOCALAPPDATA\Programs\Python\Python312\python.exe" -m pip install vieneu
-   ```
-
-3. Open OverSub again. The first time, VieNeu downloads its voice model from Hugging Face, so it takes longer; after that the voice is ready within a few seconds.
+- Open Settings → Voice (or step 3 of the First-run guide), and in the voice block at the top of the page select Install voice. The app downloads its own Python runtime (about 11 MB from python.org, checked against its SHA-256 hash), installs the required packages with pip from pypi.org and downloads the voice model from huggingface.co.
+- The progress bar shows each installation step. Use Cancel to stop (already downloaded parts are kept, and installing again resumes from where it left off); if a network error occurs, the app shows the reason with a Retry button. Installation runs at low priority so it affects games as little as possible, and closing the Settings window doesn't stop it.
+- The Nano model (default) downloads about 0.4 GB once, takes about 0.5 GB on disk and needs about 1.5 GB of free space during installation. Measured on a ROG Ally: installing packages takes about 40 seconds and downloading the Nano model takes about 16 seconds (depending on your connection). Once installed, the voice turns on automatically without restarting the app. If a slow connection makes loading the model take longer than usual on the first run, the app waits up to 20 minutes and turns the voice on automatically when finished.
+- Everything is kept in its own `%LOCALAPPDATA%\OverSub\voice` folder and doesn't touch any other Python installation or packages on your PC. To remove it, select Remove voice in the same block (press twice to confirm) to delete that folder.
+- When the VieNeu voice isn't installed yet (or isn't ready yet), OverSub temporarily speaks with the built-in Windows Vietnamese voice if your PC has one (for example Microsoft An) and notes this in the main window; if your PC has no Windows Vietnamese voice, it shows text only. Once VieNeu is ready, the app switches to VieNeu automatically.
 
 On the Voice tab in Settings, you can adjust:
 
-- VieNeu model: Nano (fast, speaks after about 1.5 seconds, default) or Turbo (more natural, waits about 2 to 4 seconds per line). Each model has several male and female voices to choose from under Voice, with a Preview button. If you switch between Nano and Turbo, please click Save to load the new model and reopen Settings to preview it.
+- VieNeu model: Nano (fast, speaks after about 1.5 seconds, default) or Turbo (more natural, waits about 2 to 4 seconds per line). The Turbo model needs an extra 0.6 GB download via the Download Turbo button when Turbo is selected under VieNeu model (or Download Nano if the Nano model needs to be downloaded). Each model has several male and female voices to choose from under Voice, with a Preview button. If you switch between Nano and Turbo, please click Save to load the new model and reopen Settings to preview it.
 - Voice output: set to Automatic by default, which plays through the default Windows speaker while skipping capture card audio ports and virtual speakers such as Steam Streaming so sound isn't lost. You can also pick a specific speaker or headset from the list.
 - Voice volume: slide from 0% to 200%. Each spoken line is normalized to a consistent loudness; above 100% the voice is amplified further while holding back peaks so it doesn't distort.
 - When translating into a language other than Vietnamese, OverSub automatically switches to the built-in Windows voice for that language.
 
 While playing, when a new dialogue line appears, the next line is prepared while the current line is still playing. If dialogue comes in rapid succession, the voice speeds up slightly to keep up with the lines on screen.
+
+Using an existing Python setup: if your PC already has Python 3.12 and the `vieneu` package installed from the old instructions, the app continues to work with them as before (the app prefers OverSub's own runtime if installed, and otherwise uses the existing Python on your PC).
 
 ### Screen translation and Text only mode
 
@@ -241,10 +236,10 @@ Select History in the main window (or on the control bar in Watch and play or Re
 
 ## Translation services and API keys
 
-To translate with AI, you need at least one Gemini or Groq API key. Both offer free plans:
+To translate with AI, you need at least one Gemini or Groq API key. You can add a key right in step 2 of the First-run guide (select Open the key page, then use Paste and Add, or turn on Use Google Translate while there is no key) or add one in Settings. Both services offer free plans:
 
-1. Get a free key at [Google AI Studio](https://aistudio.google.com/apikey) (Gemini) or [Groq](https://console.groq.com/keys).
-2. Open OverSub, select Settings and choose the Translation tab.
+1. Open OverSub, select Settings and choose the Translation tab.
+2. Select Get a key on the Gemini or Groq card to open your browser to the free key page at [Google AI Studio](https://aistudio.google.com/apikey) (Gemini) or [Groq](https://console.groq.com/keys).
 3. Paste the key into Gemini keys or Groq keys and select Add. You can add multiple keys. The app test-translates a short line to check the key and adds it only if it works.
 4. Select Save.
 
@@ -254,7 +249,7 @@ To translate with AI, you need at least one Gemini or Groq API key. Both offer f
 |---|---|
 | Gemini | Produces the most natural translations and keeps tone best among the free options. Free quota is counted per Google Cloud project, so multiple keys created in the same project share one quota; to increase your quota, create keys in separate projects. |
 | Groq | Very fast. Steps in right away when Gemini is busy, takes longer than 2.5 seconds to answer or runs out of quota. |
-| Google Translate (fallback) | No key needed. When Show a Google Translate version while waiting for AI is turned on, if the AI version hasn't arrived after 1.5 seconds, the line temporarily shows Google Translate and is replaced by the AI version once ready (the voice still reads only the AI version). When all AI services fail or run out of quota, OverSub uses Google Translate so play isn't interrupted. |
+| Google Translate (fallback) | No key needed. When you have no key yet, OverSub translates with Google Translate and the status line in the main window states clearly that there is no translation key so Google Translate is in use. When Show a Google Translate version while waiting for AI is turned on, if the AI version hasn't arrived after 1.5 seconds, the line temporarily shows Google Translate and is replaced by the AI version once ready (the voice still reads only the AI version). When all AI services fail or run out of quota, OverSub uses Google Translate so play isn't interrupted. |
 
 You should add both Gemini and Groq keys so they back each other up. The saved key list shows a colored dot and a status line for each key: active with the number of lines translated today, paused after running out of quota with the time it can be used again, or the most recent error. When all keys are briefly paused after hitting a per-minute rate limit, dialogue lines wait a few seconds until a key reopens instead of dropping the line, and Screen translation yields key quota to dialogue.
 
@@ -303,7 +298,7 @@ Screens of the Xbox app, Armoury Crate, Steam, Playnite and other game launchers
 
 ## Privacy and data
 
-Screenshots and video streams from the capture card are processed entirely on your PC and are never sent anywhere. Text recognition (OneOCR and Windows OCR) and the VieNeu Vietnamese voice both run right on your PC.
+Screenshots and video streams from the capture card are processed entirely on your PC and are never sent anywhere. Text recognition (OneOCR and Windows OCR) and the VieNeu Vietnamese voice both run right on your PC. When you select Install voice, the app downloads its own Python runtime, packages and voice model from python.org, pypi.org and huggingface.co (connecting only during installation, without sending any of your data out).
 
 When translating, only the recognized text is sent to the translation service:
 
@@ -315,6 +310,7 @@ OverSub has no server of its own, collects no usage data and has no ads. All loc
 - `keys.bin`: holds the API keys you entered, encrypted by Windows with DPAPI for your specific Windows user account (keys are never written to logs or shown in full on screen).
 - `lgtv.bin`: holds pairing information for your LG TV (if you use TV subtitles), also encrypted with DPAPI for your Windows account.
 - `settings.json`, `ui-memory.json` and translation memory files: store settings, per-game region profiles, forms of address and translated lines.
+- `voice`: holds the private Python runtime and VieNeu voice models, removable with the Remove voice button under Settings → Voice.
 - `Logs`: holds per-session diagnostic logs. Logs include text read from the game and translations to help troubleshoot bugs, but never contain API keys.
 
 ## Troubleshooting and FAQ
@@ -322,14 +318,14 @@ OverSub has no server of its own, collects no usage data and has no ads. All loc
 <details>
 <summary>Windows SmartScreen or my browser blocks the installer from opening</summary>
 
-The installer doesn't have a paid code-signing certificate yet, so Windows SmartScreen shows the "Windows protected your PC" dialog the first time you open it. Please click More info, check that the file name is `OverSub-Setup-x.y.z.exe` downloaded from the Releases page of this repository, and click Run anyway. If your browser reports that the file is rarely downloaded, click the three-dots menu next to the download and choose Keep. You can also verify the SHA-256 checksum as described under [Installing](#installing).
+The installer doesn't have a paid code-signing certificate yet, so Windows SmartScreen shows the "Windows protected your PC" dialog the first time you open it. Please click More info, check that the file name is `OverSub-Setup-x.y.z.exe` downloaded from the Releases page of this repository, and click Run anyway. If Windows is set to Vietnamese, these buttons appear in Vietnamese in the same place. If your browser reports that the file is rarely downloaded, click the three-dots menu next to the download and choose Keep. You can also verify the SHA-256 checksum as described under [Installing](#installing).
 </details>
 
 <details>
 <summary>The Vietnamese voice doesn't start, or reports that it is running with no sound</summary>
 
-- Check that you have installed Python 3.12 (the standard 64-bit build from winget or python.org, not the Microsoft Store version) and the `vieneu` package. Under Settings → Voice, the note below Voice explains the reason clearly if Python isn't found or `vieneu` is missing.
-- During the first 7 seconds after opening OverSub, or on the very first run while VieNeu is downloading its voice model from Hugging Face to your PC, the voice isn't ready right away so the first few lines may show text only. Open Settings → Voice and select Preview to check.
+- Open Settings → Voice and check the status line in the voice installation block at the top of the page. If it isn't installed yet, select Install voice; if a previous installation was interrupted by a network error, the status line shows the reason and you can select Retry to continue installing.
+- During the first 7 seconds after opening OverSub, or on the first run when downloading the model over a slow connection, the VieNeu voice is still loading so the app temporarily speaks with the Windows Vietnamese voice (if your PC has one) or shows text only. If loading takes longer than usual, the app waits up to 20 minutes and turns the voice on automatically when finished without needing a restart. You can select Preview under Settings → Voice to check.
 - If the app reports that it is playing the voice but you hear nothing, Windows may have switched its default speaker to the capture card's audio port or a virtual speaker when you plugged in the capture card. Go to Settings → Voice → Voice output, choose your PC's speaker or the headphones you are wearing, and select Save.
 </details>
 
@@ -367,7 +363,7 @@ The installer doesn't have a paid code-signing certificate yet, so Windows Smart
 <details>
 <summary>How to uninstall and remove all data</summary>
 
-Go to Windows Settings → Apps → Installed apps, find OverSub and click Uninstall. By default, the `%LOCALAPPDATA%\OverSub` folder (holding settings, encrypted keys, game profiles, translation memory and logs) is kept so you don't have to set everything up again if you install a newer version. If you want to wipe all OverSub data from your PC, open File Explorer, paste `%LOCALAPPDATA%\OverSub` into the address bar and delete that folder. Python 3.12 and the `vieneu` package (if you installed them) are uninstalled separately in Installed apps or via `pip uninstall vieneu`.
+Go to Windows Settings → Apps → Installed apps, find OverSub and click Uninstall. By default, the `%LOCALAPPDATA%\OverSub` folder (holding settings, encrypted keys, game profiles, translation memory, the `voice` folder and logs) is kept so you don't have to set everything up again if you install a newer version. The voice installed inside the app lives in the `voice` folder and can be removed on its own with Remove voice under Settings → Voice, or deleted along with the data folder. If you want to wipe all OverSub data from your PC, open File Explorer, paste `%LOCALAPPDATA%\OverSub` into the address bar and delete that folder. If you previously installed Python 3.12 and the `vieneu` package yourself for an older version, uninstall them separately in Installed apps.
 </details>
 
 ## Current limitations
@@ -375,7 +371,7 @@ Go to Windows Settings → Apps → Installed apps, find OverSub and click Unins
 - The installer isn't digitally signed yet, so Windows SmartScreen warns on first launch.
 - There is no native build for Windows PCs with ARM chips yet.
 - There is no automatic in-app update feature yet.
-- The Vietnamese voice requires installing Python 3.12 and the `vieneu` package separately. During the first 7 seconds after opening the app, while the voice is loading its model, dialogue lines may show text only without being read aloud yet.
+- The Vietnamese voice requires downloading about 0.4 GB on first installation. During the first 7 seconds after opening the app, while the voice is loading its model, dialogue lines may show text only without being read aloud by VieNeu yet.
 - When playing a game running directly on the PC in legacy Exclusive Fullscreen mode (used by some older DirectX 9 or DirectX 11 games), Windows overlay windows may not be able to appear on top of the game; please switch the display mode in the game's settings to Borderless Windowed or Windowed.
 - Japanese, Korean and Chinese games have been tested so far with dialogue subtitles; Screen translation and Traditional Chinese haven't been tested yet.
 - This build has been tested thoroughly on a ROG Ally handheld with a Hagibis capture card. If OverSub doesn't run properly on your PC or device, please report it in an Issue.
