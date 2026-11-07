@@ -20,6 +20,10 @@ OverSub reads the text in a game on screen, translates it with AI, shows the tra
 
 </div>
 
+https://github.com/user-attachments/assets/53a41568-c7d5-4734-913f-22f9ba1ecebc
+
+<sub>Introduction video for OverSub for Windows.</sub>
+
 This repository holds only the installer and the documentation. The source code of OverSub for Windows is not published.
 
 OverSub for Windows is in testing: releases are marked Pre-release and may still have bugs.

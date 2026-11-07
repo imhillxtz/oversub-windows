@@ -20,6 +20,10 @@ Tiếng Việt · [English](README.en.md)
 
 </div>
 
+https://github.com/user-attachments/assets/53a41568-c7d5-4734-913f-22f9ba1ecebc
+
+<sub>Video giới thiệu OverSub cho Windows.</sub>
+
 Kho này chỉ chứa bộ cài và tài liệu. Mã nguồn của OverSub cho Windows không được công khai.
 
 OverSub cho Windows đang ở giai đoạn thử nghiệm: các bản phát hành được gắn nhãn Pre-release và có thể còn lỗi.
