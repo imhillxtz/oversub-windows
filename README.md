@@ -49,7 +49,7 @@ OverSub dùng được với game Windows chạy trực tiếp trên PC để b�
 | Tính năng | Làm gì |
 |---|---|
 | Phụ đề | Đọc lời thoại trong vùng bạn chọn, dịch rồi hiện bản dịch đè lên ô phụ đề của game theo màu nền, màu chữ, cỡ chữ và căn lề của hộp thoại gốc. Có thể xem ở Phụ đề nổi, một dải phụ đề riêng nằm trên game và kéo đi đâu cũng được. |
-| Giọng đọc | Đọc to lời thoại đã dịch bằng giọng Việt VieNeu chạy ngay trên máy. Câu thoại được ưu tiên đọc trước chữ giao diện; câu kế được chuẩn bị trong lúc câu trước đang đọc, và khi thoại dồn dập thì giọng đọc nhanh hơn một chút để theo kịp. Lớp chữ dịch trên màn hình giữ câu đang đọc cho tới khi giọng đọc xong. |
+| Giọng đọc | Đọc to lời thoại đã dịch bằng giọng Việt VieNeu chạy ngay trên máy. Câu thoại được ưu tiên đọc trước chữ giao diện. Lớp chữ dịch trên màn hình giữ câu đang đọc cho tới khi giọng đọc xong. |
 | Dịch màn hình | Dịch tại chỗ chữ ngoài lời thoại như menu, bảng nhiệm vụ, mô tả vật phẩm và các trang hướng dẫn trong game. App xoá chữ gốc bằng cách dựng lại nền từ các điểm ảnh xung quanh rồi đặt chữ dịch cùng màu vào đúng khung. |
 
 Các tính năng khác:
@@ -113,7 +113,7 @@ So kết quả với nội dung tệp `OverSub-Setup-x.y.z.exe.sha256` trên tra
 
 ### Cập nhật
 
-OverSub tự kiểm tra bản mới trên trang Releases của kho này 10 giây sau khi mở app rồi 6 giờ một lần. Khi có bản mới, cửa sổ chính hiện thông báo nổi kèm nút Xem. Bấm Xem để mở cửa sổ liệt kê thay đổi của mọi bản kể từ bản bạn đang dùng, với ba nút Cập nhật, Để sau và Bỏ qua bản này. Khi chọn Cập nhật, app tải bộ cài về, kiểm tra chữ ký số của tác giả khớp với khoá công khai nhúng trong app rồi chạy bộ cài im lặng; xong xuôi OverSub tự đóng rồi mở lại. Cài đặt, key, hồ sơ game, trí nhớ dịch và giọng đọc đều giữ nguyên.
+OverSub tự kiểm tra bản mới trên trang Releases của kho này. Khi có bản mới, cửa sổ chính hiện thông báo nổi kèm nút Xem. Bấm Xem để mở cửa sổ liệt kê thay đổi của mọi bản kể từ bản bạn đang dùng, với ba nút Cập nhật, Để sau và Bỏ qua bản này. Khi chọn Cập nhật, app tải bộ cài về, kiểm tra chữ ký số của tác giả rồi chạy bộ cài im lặng; xong xuôi OverSub tự đóng rồi mở lại. Cài đặt, key, hồ sơ game, trí nhớ dịch và giọng đọc đều giữ nguyên.
 
 Ở Cài đặt → Chung, bạn có thể bật hoặc tắt công tắc Tự kiểm tra bản mới (mặc định bật), bật công tắc Cài bản mới khi thoát OverSub (mặc định tắt; khi bật, bản mới tải sẵn rồi cài lúc bạn thoát app) hoặc bấm Kiểm tra cập nhật bất cứ lúc nào.
 
@@ -160,9 +160,9 @@ Nếu không muốn đè lên hộp thoại gốc hoặc muốn đặt phụ đ�
 
 Giọng Việt dùng [VieNeu-TTS](https://github.com/pnnbao97/VieNeu-TTS) (giấy phép Apache 2.0), chạy ngay trên máy và cài trực tiếp trong OverSub mà không cần tự cài Python hay gõ lệnh:
 
-- Mở Cài đặt → Giọng đọc (hoặc ở bước 3 của Hướng dẫn lần đầu), tại khối cài giọng ở đầu trang bấm Cài giọng đọc. App tự tải bản Python riêng (khoảng 11 MB từ python.org, có kiểm mã SHA-256), cài thư viện bằng pip từ pypi.org rồi tải model giọng từ huggingface.co.
-- Thanh tiến độ hiện các bước cài. Có nút Huỷ để dừng (phần đã tải được giữ lại, bấm cài lại sẽ làm tiếp); nếu lỗi mạng thì app báo lý do và có nút Thử lại. Việc cài chạy ở mức ưu tiên thấp để ít ảnh hưởng tới game, và đóng cửa sổ Cài đặt không dừng việc cài.
-- Bộ giọng Nano (mặc định) tải khoảng 0,4 GB một lần, chiếm khoảng 0,5 GB trên ổ đĩa và cần còn trống khoảng 1,5 GB lúc cài. Đo trên máy ROG Ally: cài thư viện khoảng 40 giây, tải model Nano khoảng 16 giây (phụ thuộc mạng). Cài xong giọng tự bật, không cần mở lại app. Nếu lần đầu tải model qua mạng chậm khiến giọng nạp lâu hơn thường, app chờ tối đa 20 phút và tự bật khi xong.
+- Mở Cài đặt → Giọng đọc (hoặc ở bước 3 của Hướng dẫn lần đầu), tại khối cài giọng ở đầu trang bấm Cài giọng đọc. App tự tải bản Python riêng (khoảng 11 MB từ python.org), cài thư viện bằng pip từ pypi.org rồi tải model giọng từ huggingface.co.
+- Thanh tiến độ hiện các bước cài. Có nút Huỷ để dừng (phần đã tải được giữ lại, bấm cài lại sẽ làm tiếp); nếu lỗi mạng thì app báo lý do và có nút Thử lại. Đóng cửa sổ Cài đặt không dừng việc cài.
+- Bộ giọng Nano (mặc định) tải khoảng 0,4 GB một lần, chiếm khoảng 0,5 GB trên ổ đĩa và cần còn trống khoảng 1,5 GB lúc cài. Cài xong giọng tự bật, không cần mở lại app. Nếu mạng chậm khiến giọng nạp lâu hơn thường, app tự bật giọng khi xong.
 - Mọi thứ nằm trong thư mục riêng `%LOCALAPPDATA%\OverSub\voice`, không đụng tới Python hay gói nào khác trên máy. Để gỡ, bấm nút Gỡ giọng đọc trong cùng khối (bấm hai lần để xác nhận) để xoá thư mục này.
 - Khi chưa cài giọng VieNeu (hoặc lúc giọng chưa lên), OverSub tạm đọc bằng giọng tiếng Việt của Windows nếu máy có (ví dụ Microsoft An) và báo trên cửa sổ chính; máy không có giọng tiếng Việt của Windows thì chỉ hiện chữ. Khi VieNeu sẵn sàng, app tự chuyển sang VieNeu.
 
@@ -170,12 +170,8 @@ Giọng Việt dùng [VieNeu-TTS](https://github.com/pnnbao97/VieNeu-TTS) (giấ
 
 - Bộ giọng VieNeu: Nano (nhanh, đọc sau khoảng 1,5 giây, mặc định) hoặc Turbo (tự nhiên hơn, chờ khoảng 2 đến 4 giây mỗi câu). Bộ Turbo cần tải thêm khoảng 0,6 GB bằng nút Tải bộ Turbo khi chọn Turbo ở ô Bộ giọng VieNeu (hoặc nút Tải bộ Nano nếu cần tải bộ Nano). Mỗi bộ có nhiều giọng nam và nữ để chọn ở mục Giọng, kèm nút Nghe thử. Nếu đổi giữa Nano và Turbo, vui lòng bấm Lưu để nạp bộ giọng mới rồi mở lại Cài đặt để nghe thử.
 - Loa phát giọng: mặc định để Tự chọn, app sẽ phát ra loa mặc định của Windows nhưng tự tránh cổng âm thanh của capture card và các loa ảo như Steam Streaming để không bị mất tiếng. Bạn cũng có thể chọn cố định một loa hoặc tai nghe trong danh sách.
-- Âm lượng giọng đọc: kéo từ 0% đến 200%. Mỗi câu đọc ra đều được cân về cùng độ to; khi kéo trên 100%, giọng được khuếch đại thêm nhưng giữ đỉnh âm không bị rè.
+- Âm lượng giọng đọc: kéo từ 0% đến 200%.
 - Khi dịch sang ngôn ngữ khác tiếng Việt, OverSub tự chuyển sang giọng đọc có sẵn của Windows cho ngôn ngữ đó.
-
-Trong lúc chơi, khi câu thoại mới xuất hiện, câu tiếp theo được chuẩn bị sẵn trong lúc câu hiện tại đang phát. Nếu hội thoại diễn ra dồn dập, giọng đọc tự tăng tốc nhẹ để bắt kịp nhịp câu trên màn hình.
-
-Dùng Python có sẵn: máy nào đã tự cài Python 3.12 và gói `vieneu` theo hướng dẫn cũ thì app vẫn dùng được như trước (app ưu tiên bản riêng của OverSub nếu đã cài, không thì dùng Python có sẵn).
 
 ### Dịch màn hình và chế độ Chỉ chữ
 
@@ -259,7 +255,7 @@ Bấm nút Lịch sử trên cửa sổ chính (hoặc trên thanh nút của m�
 | Dịch vụ tự thêm (trả phí) | Dịch vụ có API kiểu OpenAI (chat/completions), như OpenAI, DeepSeek hay xAI Grok. Nhà cung cấp tính phí theo lượng chữ; một câu thoại dùng khoảng 300 đến 600 token kèm ngữ cảnh. |
 | Google Dịch (tạm) | Không cần key. Khi chưa có key nào, OverSub dịch bằng Google Dịch và dòng trạng thái ở cửa sổ chính báo rõ "Chưa có key dịch nên đang dùng Google Dịch". Khi bật ô Hiện bản Google Dịch trong lúc chờ AI, nếu bản AI chưa về sau 1,5 giây thì câu thoại hiện tạm bản Google Dịch rồi tự thay bằng bản AI khi có (giọng đọc vẫn chỉ đọc bản AI). Khi mọi dịch vụ AI đều lỗi hoặc hết lượt, OverSub dùng bản Google Dịch để việc chơi không bị đứt quãng. |
 
-Bạn nên thêm cả key Gemini và key Groq để dự phòng cho nhau. Ở Cài đặt → Dịch vụ dịch còn có khối Dịch vụ dịch khác (không bắt buộc), mở sẵn, để thêm key của Cerebras, Mistral và OpenRouter (đều có gói miễn phí, mỗi dịch vụ có nút Lấy key, ô nhập key và nút Thêm) làm dự phòng khi Gemini và Groq hết lượt. Cuối khối là thẻ Dịch vụ tự thêm (trả phí): bấm Chọn nhanh nhà cung cấp để điền sẵn tên và địa chỉ API của OpenAI, DeepSeek, xAI (Grok), Together AI hoặc Fireworks, hay tự nhập địa chỉ API của một dịch vụ khác có API kiểu OpenAI (địa chỉ bắt đầu bằng https://), rồi dán key và bấm Thêm. Ô Tên model có thể để trống: OverSub chọn một model nhỏ trong danh sách của tài khoản, và báo để bạn nhập tên nếu không chọn được. Danh sách key đã lưu có chấm màu và dòng trạng thái của từng key: đang hoạt động kèm số câu đã dịch hôm nay, tạm nghỉ vì hết lượt kèm lúc dùng lại được, hoặc lỗi lần gần nhất. Khi tất cả các key đang tạm nghỉ vì chạm giới hạn lượt theo phút, câu thoại sẽ tự chờ vài giây tới khi key mở lại thay vì bỏ sót câu, và Dịch màn hình tự nhường lượt key cho câu thoại.
+Bạn nên thêm cả key Gemini và key Groq để dự phòng cho nhau. Ở Cài đặt → Dịch vụ dịch còn có khối Dịch vụ dịch khác (không bắt buộc), mở sẵn, để thêm key của Cerebras, Mistral và OpenRouter (đều có gói miễn phí, mỗi dịch vụ có nút Lấy key, ô nhập key và nút Thêm) làm dự phòng khi Gemini và Groq hết lượt. Cuối khối là thẻ Dịch vụ tự thêm (trả phí): bấm Chọn nhanh nhà cung cấp để điền sẵn tên và địa chỉ API của OpenAI, DeepSeek, xAI (Grok), Together AI hoặc Fireworks, hay tự nhập địa chỉ API của một dịch vụ khác có API kiểu OpenAI (địa chỉ bắt đầu bằng https://), rồi dán key và bấm Thêm. Ô Tên model có thể để trống: OverSub chọn một model nhỏ trong danh sách của tài khoản, và báo để bạn nhập tên nếu không chọn được. Danh sách key đã lưu có chấm màu và dòng trạng thái của từng key: đang hoạt động kèm số câu đã dịch hôm nay, tạm nghỉ vì hết lượt kèm lúc dùng lại được, hoặc lỗi lần gần nhất.
 
 Ở mục Ưu tiên khi dịch phụ đề, bạn có thể chọn:
 
@@ -269,6 +265,8 @@ Bạn nên thêm cả key Gemini và key Groq để dự phòng cho nhau. Ở C�
 - Tuỳ chỉnh: dùng đúng thứ tự bạn sắp ở thẻ Thứ tự và bật tắt dịch vụ; chỉ bỏ qua dịch vụ đang lỗi hoặc hết lượt. Dịch vụ đầu dịch mọi câu thoại, các dịch vụ sau chỉ dự phòng.
 
 Thẻ Thứ tự và bật tắt dịch vụ nằm ngay dưới mục Ưu tiên. Thẻ liệt kê các dịch vụ đã có key, mỗi dịch vụ có một công tắc để cho nghỉ mà vẫn giữ key; khi chọn Tuỳ chỉnh, mỗi dòng có thêm hai mũi tên để đưa dịch vụ lên hoặc xuống. Khối Nâng cao: tên model cho phép đặt tên model riêng cho Gemini, Groq, Cerebras, Mistral và OpenRouter, ví dụ một model trả phí của OpenRouter; để trống thì OverSub tự chọn.
+
+<img src="Docs/images/vi/settings-services.png" width="680" alt="Thẻ Dịch vụ tự thêm, mục Ưu tiên khi dịch phụ đề và thẻ Thứ tự và bật tắt dịch vụ trong Cài đặt của OverSub">
 
 Hạn mức miễn phí do từng nhà cung cấp quy định và có thể thay đổi theo thời gian. Phí của dịch vụ tự thêm do nhà cung cấp tính theo bảng giá của họ.
 
@@ -344,7 +342,7 @@ Khi dịch, chỉ có văn bản chữ đọc được mới gửi tới dịch 
 - Các dịch vụ AI mà bạn đã thêm key (Gemini, Groq, Cerebras, Mistral, OpenRouter hoặc dịch vụ tự thêm) nhận câu cần dịch, một vài câu thoại trước đó làm ngữ cảnh, danh sách xưng hô của các nhân vật liên quan và thể loại game. Với dịch vụ tự thêm, nội dung này và key được gửi tới địa chỉ API do bạn nhập.
 - Google Dịch nhận chữ khi cần hiện bản dịch tạm trong lúc chờ AI hoặc khi dùng chế độ Tức thì của Dịch màn hình. Nếu bạn không muốn gửi chữ tới Google Dịch, hãy vào Cài đặt → Dịch vụ dịch, tắt ô Hiện bản Google Dịch trong lúc chờ AI và đặt Tốc độ Dịch màn hình thành Chờ bản AI.
 
-OverSub không có máy chủ riêng, không thu thập dữ liệu sử dụng và không có quảng cáo. Việc kiểm tra cập nhật chỉ hỏi trang Releases công khai của kho này trên GitHub một lần mỗi đợt, không gửi thông tin gì về người dùng; bộ cài tải về phải có chữ ký số của tác giả khớp với khoá công khai nhúng trong app thì mới được cài. Gói báo lỗi chỉ được tạo trên máy khi bạn bấm nút và không bao giờ tự gửi đi. Toàn bộ dữ liệu trên máy nằm trong thư mục `%LOCALAPPDATA%\OverSub`:
+OverSub không có máy chủ riêng, không thu thập dữ liệu sử dụng và không có quảng cáo. Việc kiểm tra cập nhật chỉ hỏi trang Releases công khai của kho này trên GitHub một lần mỗi đợt, không gửi thông tin gì về người dùng; bộ cài tải về phải có chữ ký số hợp lệ của tác giả thì mới được cài. Gói báo lỗi chỉ được tạo trên máy khi bạn bấm nút và không bao giờ tự gửi đi. Toàn bộ dữ liệu trên máy nằm trong thư mục `%LOCALAPPDATA%\OverSub`:
 
 - `keys.bin`: chứa key API bạn đã nhập, được Windows mã hoá bằng DPAPI theo đúng tài khoản người dùng Windows của bạn (không bao giờ ghi key ra nhật ký hay hiện nguyên key trên màn hình).
 - `lgtv.bin`: chứa thông tin ghép nối với TV LG (nếu bạn dùng tính năng phụ đề trên TV), cũng được mã hoá bằng DPAPI theo tài khoản Windows.
@@ -365,7 +363,7 @@ Bộ cài hiện chưa có chứng chỉ chữ ký số trả phí nên Windows 
 <summary>Giọng đọc tiếng Việt không lên, hoặc báo đang chạy nhưng không nghe thấy tiếng</summary>
 
 - Mở Cài đặt → Giọng đọc và xem dòng trạng thái ở khối cài giọng đầu trang. Nếu chưa cài, hãy bấm Cài giọng đọc; nếu lần cài trước bị ngắt vì lỗi mạng, dòng trạng thái sẽ báo lý do và bạn có thể bấm Thử lại để cài tiếp.
-- Trong khoảng 7 giây đầu sau khi vừa mở OverSub, hoặc ở lần đầu tải model qua mạng chậm, giọng VieNeu đang nạp nên app tạm đọc bằng giọng tiếng Việt của Windows (nếu máy có) hoặc chỉ hiện chữ. Nếu giọng nạp lâu hơn thường, app chờ tối đa 20 phút và tự bật khi xong mà không cần đóng mở lại. Bạn có thể bấm Nghe thử ở Cài đặt → Giọng đọc để kiểm tra.
+- Trong khoảng 7 giây đầu sau khi vừa mở OverSub, hoặc ở lần đầu tải model qua mạng chậm, giọng VieNeu đang nạp nên app tạm đọc bằng giọng tiếng Việt của Windows (nếu máy có) hoặc chỉ hiện chữ. Nếu giọng nạp lâu hơn thường, app tự bật giọng khi xong mà không cần đóng mở lại. Bạn có thể bấm Nghe thử ở Cài đặt → Giọng đọc để kiểm tra.
 - Nếu app báo đang phát giọng đọc mà bạn không nghe thấy gì, rất có thể khi cắm capture card, Windows đã tự chuyển loa mặc định sang cổng âm thanh của capture card hoặc một loa ảo. Vào Cài đặt → Giọng đọc → Loa phát giọng, chọn đúng loa của máy hoặc tai nghe bạn đang đeo rồi bấm Lưu.
 </details>
 
@@ -418,18 +416,21 @@ Vào Windows Settings → Apps → Installed apps, tìm OverSub và bấm Uninst
 
 ## Góp ý và báo lỗi
 
-Cách nhanh nhất là mở Cài đặt → Chung (nơi có dòng số phiên bản `OverSub x.y.z`) rồi bấm Gửi báo lỗi…. App tạo một tệp `.zip` trên máy trong `%LOCALAPPDATA%\OverSub\Reports` (giữ 5 gói mới nhất, gồm nhật ký, cài đặt và thông tin máy; không có key API, thông tin ghép nối TV hay trí nhớ dịch) rồi mở cửa sổ với ba nút: Mở thư mục có tệp, Mở trang báo lỗi (mở trang Issue mới trên GitHub, điền sẵn phiên bản và thông tin máy) và Gửi qua email (soạn thư tới `hillx.design@gmail.com`). App không tự gửi gì; bạn tự kéo tệp `.zip` vào trang báo lỗi hoặc đính kèm vào thư. Khi gặp lỗi giao diện không bắt được, app vẫn chạy và báo một lần mỗi phiên trên dòng trạng thái, chỉ tới nút Gửi báo lỗi….
+Cách nhanh nhất là mở Cài đặt → Chung (nơi có dòng số phiên bản `OverSub x.y.z`) rồi bấm Gửi báo lỗi…. App tạo một tệp `.zip` trên máy trong `%LOCALAPPDATA%\OverSub\Reports` (giữ 5 gói mới nhất, gồm nhật ký, cài đặt và thông tin máy; không có key API, thông tin ghép nối TV hay trí nhớ dịch) rồi mở cửa sổ với ba nút: Mở thư mục có tệp, Mở trang báo lỗi (mở trang Issue mới trên GitHub, điền sẵn phiên bản và thông tin máy) và Gửi qua email (soạn thư tới `hillx.design@gmail.com`). App không tự gửi gì; bạn tự kéo tệp `.zip` vào trang báo lỗi hoặc đính kèm vào thư.
 
 Bạn cũng có thể mở trực tiếp một [Issue](https://github.com/imhillxtz/oversub-windows/issues) trên GitHub, ghi rõ phiên bản OverSub, dòng máy Windows đang dùng, tên game, cách chơi và đính kèm tệp nhật ký mới nhất trong `%LOCALAPPDATA%\OverSub\Logs` (mở nhanh bằng nút Mở thư mục ở Cài đặt → Chung → Nhật ký chẩn đoán). Vui lòng đọc qua nhật ký trước khi gửi, vì nhật ký có chứa các câu chữ đọc được trong game của bạn.
 
 ## Ủng hộ
 
-OverSub miễn phí cho mọi người. Nếu thấy app hữu ích, bạn có thể mời mình một ly cà phê qua [paypal.me/ngochieuit](https://paypal.me/ngochieuit), hoặc bấm nút Ủng hộ ở cửa sổ chính (hay bấm Ủng hộ ở thẻ Ủng hộ OverSub trong Cài đặt → Chung) để mở cửa sổ Ủng hộ ngay trong app:
+OverSub miễn phí cho mọi người. App được làm ra để người chơi game theo được câu chuyện, kể cả khi không thạo ngôn ngữ của game. Nếu thấy OverSub hữu ích, bạn có thể mời mình một ly cà phê để app tiếp tục được phát triển. Mỗi khoản ủng hộ, dù lớn hay nhỏ, đều giúp OverSub được sửa lỗi, hỗ trợ thêm game và có thêm tính năng mới.
 
-- Trong nước · VietQR: chọn mức 20.000đ, 50.000đ, 100.000đ hoặc tự nhập số tiền, rồi quét mã bằng ứng dụng ngân hàng, MoMo hay ZaloPay (người nhận `TRINH NGOC HIEU`, ví MoMo, nội dung `OverSub`). Bạn có thể nhập tên vào ô tên để ghi kèm trong nội dung chuyển khoản.
-- Quốc tế · PayPal: chọn mức 3, 5, 10 đô la hoặc tự nhập số tiền, rồi bấm Mở PayPal để mở trang `paypal.me/ngochieuit`.
+<img src="Docs/images/donate-vietqr.png" width="180" align="right" alt="Mã VietQR ủng hộ OverSub">
 
-Cửa sổ Ủng hộ có ô Mình đã ủng hộ rồi. Khi tổng số câu đã dịch vượt các mốc 300, 1.000, 3.000 và 10.000 câu, OverSub hiện một lời cảm ơn kèm nút Ủng hộ lúc vừa mở app (mỗi mốc một lần, không bao giờ hiện khi đang chơi; đánh dấu ô Mình đã ủng hộ rồi để tắt hẳn các lời nhắc này). Gắn sao cho kho này hoặc giới thiệu OverSub với bạn bè cũng là một cách ủng hộ.
+- Trong nước: quét mã VietQR bên cạnh bằng app ngân hàng, MoMo hoặc ZaloPay (người nhận TRINH NGOC HIEU, ví MoMo, nội dung "OverSub").
+- Quốc tế: [paypal.me/ngochieuit](https://paypal.me/ngochieuit).
+- Gắn sao cho kho này trên GitHub hoặc giới thiệu OverSub với bạn bè cũng là một cách ủng hộ.
+
+<br clear="right">
 
 ## Nền tảng khác
 

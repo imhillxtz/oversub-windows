@@ -49,7 +49,7 @@ OverSub works with Windows games running directly on a desktop PC, laptop, touch
 | Feature | What it does |
 |---|---|
 | Subtitles | Reads the dialogue in the region you select, translates it and shows the translation over the game's subtitle box, matching the original background color, text color, font size and alignment. You can also view it in Floating subtitles, a separate subtitle strip above the game that you can drag anywhere. |
-| Voice | Reads the translated dialogue aloud with the VieNeu Vietnamese voice running on your PC. Dialogue is read before interface text; the next line is prepared while the current one is playing, and when lines come quickly the voice speeds up a little to keep pace. The on-screen subtitle stays visible until the voice finishes speaking that line. |
+| Voice | Reads the translated dialogue aloud with the VieNeu Vietnamese voice running on your PC. Dialogue is read before interface text. The on-screen subtitle stays visible until the voice finishes speaking that line. |
 | Screen translation | Translates text outside the dialogue in place, such as menus, quest logs, item descriptions and in-game tutorial pages. The app erases the original text by reconstructing the background from surrounding pixels and places the translated text in the same color inside the box. |
 
 Other features:
@@ -113,7 +113,7 @@ Compare the result with the contents of `OverSub-Setup-x.y.z.exe.sha256` on the 
 
 ### Updating
 
-OverSub checks the Releases page of this repository for a new version 10 seconds after opening and every 6 hours after that. When a new version is available, a banner appears in the main window with a View button. Select View to open a window listing the changes from every release since the version you are using, with Update, Later and Skip this version buttons. When you select Update, the app downloads the installer, verifies the author's digital signature against the public key embedded in the app, and runs the installer silently; OverSub then closes and reopens on its own. Your settings, keys, game profiles, translation memory and installed voice are all kept.
+OverSub checks the Releases page of this repository for a new version by itself. When a new version is available, a banner appears in the main window with a View button. Select View to open a window listing the changes from every release since the version you are using, with Update, Later and Skip this version buttons. When you select Update, the app downloads the installer, verifies the author's digital signature, and runs the installer silently; OverSub then closes and reopens on its own. Your settings, keys, game profiles, translation memory and installed voice are all kept.
 
 Under Settings → General, you can turn the Check for new versions automatically switch on or off (on by default), turn on Install a new version when OverSub closes (off by default; when turned on, the new version is downloaded ahead of time and installed when you close the app), or select Check for updates at any time.
 
@@ -160,9 +160,9 @@ If you prefer not to cover the original dialogue box or want subtitles in a fixe
 
 The Vietnamese voice uses [VieNeu-TTS](https://github.com/pnnbao97/VieNeu-TTS) (Apache 2.0 license), running locally on your PC and installed directly inside OverSub without installing Python by hand or typing commands:
 
-- Open Settings → Voice (or step 3 of the First-run guide), and in the voice block at the top of the page select Install voice. The app downloads its own Python runtime (about 11 MB from python.org, checked against its SHA-256 hash), installs the required packages with pip from pypi.org and downloads the voice model from huggingface.co.
-- The progress bar shows each installation step. Use Cancel to stop (already downloaded parts are kept, and installing again resumes from where it left off); if a network error occurs, the app shows the reason with a Retry button. Installation runs at low priority so it affects games as little as possible, and closing the Settings window doesn't stop it.
-- The Nano model (default) downloads about 0.4 GB once, takes about 0.5 GB on disk and needs about 1.5 GB of free space during installation. Measured on a ROG Ally: installing packages takes about 40 seconds and downloading the Nano model takes about 16 seconds (depending on your connection). Once installed, the voice turns on automatically without restarting the app. If a slow connection makes loading the model take longer than usual on the first run, the app waits up to 20 minutes and turns the voice on automatically when finished.
+- Open Settings → Voice (or step 3 of the First-run guide), and in the voice block at the top of the page select Install voice. The app downloads its own Python runtime (about 11 MB from python.org), installs the required packages with pip from pypi.org and downloads the voice model from huggingface.co.
+- The progress bar shows each installation step. Use Cancel to stop (already downloaded parts are kept, and installing again resumes from where it left off); if a network error occurs, the app shows the reason with a Retry button. Closing the Settings window doesn't stop the installation.
+- The Nano model (default) downloads about 0.4 GB once, takes about 0.5 GB on disk and needs about 1.5 GB of free space during installation. Once installed, the voice turns on automatically without restarting the app. If a slow connection makes the voice load longer than usual, the app turns it on automatically when it finishes.
 - Everything is kept in its own `%LOCALAPPDATA%\OverSub\voice` folder and doesn't touch any other Python installation or packages on your PC. To remove it, select Remove voice in the same block (press twice to confirm) to delete that folder.
 - When the VieNeu voice isn't installed yet (or isn't ready yet), OverSub temporarily speaks with the built-in Windows Vietnamese voice if your PC has one (for example Microsoft An) and notes this in the main window; if your PC has no Windows Vietnamese voice, it shows text only. Once VieNeu is ready, the app switches to VieNeu automatically.
 
@@ -170,12 +170,8 @@ On the Voice tab in Settings, you can adjust:
 
 - VieNeu model: Nano (fast, speaks after about 1.5 seconds, default) or Turbo (more natural, waits about 2 to 4 seconds per line). The Turbo model needs an extra 0.6 GB download via the Download Turbo button when Turbo is selected under VieNeu model (or Download Nano if the Nano model needs to be downloaded). Each model has several male and female voices to choose from under Voice, with a Preview button. If you switch between Nano and Turbo, please click Save to load the new model and reopen Settings to preview it.
 - Voice output: set to Automatic by default, which plays through the default Windows speaker while skipping capture card audio ports and virtual speakers such as Steam Streaming so sound isn't lost. You can also pick a specific speaker or headset from the list.
-- Voice volume: slide from 0% to 200%. Each spoken line is normalized to a consistent loudness; above 100% the voice is amplified further while holding back peaks so it doesn't distort.
+- Voice volume: slide from 0% to 200%.
 - When translating into a language other than Vietnamese, OverSub automatically switches to the built-in Windows voice for that language.
-
-While playing, when a new dialogue line appears, the next line is prepared while the current line is still playing. If dialogue comes in rapid succession, the voice speeds up slightly to keep up with the lines on screen.
-
-Using an existing Python setup: if your PC already has Python 3.12 and the `vieneu` package installed from the old instructions, the app continues to work with them as before (the app prefers OverSub's own runtime if installed, and otherwise uses the existing Python on your PC).
 
 ### Screen translation and Text only mode
 
@@ -259,7 +255,7 @@ To translate with AI, you need at least one Gemini or Groq API key. You can add 
 | Custom service (paid) | A service with an OpenAI-style API (chat/completions), such as OpenAI, DeepSeek or xAI Grok. The provider bills by text volume; one line of dialogue uses roughly 300 to 600 tokens including context. |
 | Google Translate (fallback) | No key needed. When you have no key yet, OverSub translates with Google Translate and the status line in the main window states clearly that there is no translation key so Google Translate is in use. When Show a Google Translate version while waiting for AI is turned on, if the AI version hasn't arrived after 1.5 seconds, the line temporarily shows Google Translate and is replaced by the AI version once ready (the voice still reads only the AI version). When all AI services fail or run out of quota, OverSub uses Google Translate so play isn't interrupted. |
 
-You should add both Gemini and Groq keys so they back each other up. Under Settings → Translation, the More translation services (optional) section, open by default, lets you add keys for Cerebras, Mistral and OpenRouter (all with free tiers, each with its own Get a key button, key box and Add button) as extra backups when both Gemini and Groq run out of quota. At the end of that section, the Custom service (paid) card has a Quick pick a provider list that fills in the name and API address for OpenAI, DeepSeek, xAI (Grok), Together AI or Fireworks, or you can type the API address of any other service with an OpenAI-style API (the address starts with https://), then paste the key and select Add. The Model name box can stay empty: OverSub picks a small model from your account's list, and asks you to enter a name if it can't. The saved key list shows a colored dot and a status line for each key: active with the number of lines translated today, paused after running out of quota with the time it can be used again, or the most recent error. When all keys are briefly paused after hitting a per-minute rate limit, dialogue lines wait a few seconds until a key reopens instead of dropping the line, and Screen translation yields key quota to dialogue.
+You should add both Gemini and Groq keys so they back each other up. Under Settings → Translation, the More translation services (optional) section, open by default, lets you add keys for Cerebras, Mistral and OpenRouter (all with free tiers, each with its own Get a key button, key box and Add button) as extra backups when both Gemini and Groq run out of quota. At the end of that section, the Custom service (paid) card has a Quick pick a provider list that fills in the name and API address for OpenAI, DeepSeek, xAI (Grok), Together AI or Fireworks, or you can type the API address of any other service with an OpenAI-style API (the address starts with https://), then paste the key and select Add. The Model name box can stay empty: OverSub picks a small model from your account's list, and asks you to enter a name if it can't. The saved key list shows a colored dot and a status line for each key: active with the number of lines translated today, paused after running out of quota with the time it can be used again, or the most recent error.
 
 Under Subtitle translation priority, you can choose:
 
@@ -269,6 +265,8 @@ Under Subtitle translation priority, you can choose:
 - Custom: uses exactly the order you set on the Service order and switches card, skipping only services that are failing or out of requests. The first service translates every line of dialogue; the others only back it up.
 
 The Service order and switches card sits right below Subtitle translation priority. It lists the services that have a key, each with a switch to rest it while keeping its keys; with Custom selected, each row also gets two arrows to move the service up or down. The Advanced: model names section lets you set a model name of your own for Gemini, Groq, Cerebras, Mistral and OpenRouter, for example a paid OpenRouter model; leave a box empty and OverSub chooses.
+
+<img src="Docs/images/en/settings-services.png" width="680" alt="The Custom service card, the priority setting and the Service order and switches card in OverSub Settings">
 
 Free quotas are set by each provider and may change over time. The fees of a custom service are charged by its provider at their own prices.
 
@@ -344,7 +342,7 @@ When translating, only the recognized text is sent to the translation service:
 - The AI services you added keys for (Gemini, Groq, Cerebras, Mistral, OpenRouter or a custom service) receive the line to translate, a few previous lines for context, the forms of address of related characters and the game's genre. For a custom service, this content and your key are sent to the API address you entered.
 - Google Translate receives text when showing a temporary translation while waiting for AI or when using Instant mode in Screen translation. If you don't want text sent to Google Translate, go to Settings → Translation, turn off Show a Google Translate version while waiting for AI, and set Screen translation speed to Wait for AI.
 
-OverSub has no server of its own, collects no usage data and has no ads. Update checks only query the public Releases page of this repository on GitHub without sending any user information; a downloaded installer is run only if its digital signature from the author matches the public key embedded in the app. Bug report packages are created on your PC only when you press the button and are never sent automatically. All local data on your PC is stored in `%LOCALAPPDATA%\OverSub`:
+OverSub has no server of its own, collects no usage data and has no ads. Update checks only query the public Releases page of this repository on GitHub without sending any user information; a downloaded installer is run only if it carries a valid digital signature from the author. Bug report packages are created on your PC only when you press the button and are never sent automatically. All local data on your PC is stored in `%LOCALAPPDATA%\OverSub`:
 
 - `keys.bin`: holds the API keys you entered, encrypted by Windows with DPAPI for your specific Windows user account (keys are never written to logs or shown in full on screen).
 - `lgtv.bin`: holds pairing information for your LG TV (if you use TV subtitles), also encrypted with DPAPI for your Windows account.
@@ -365,7 +363,7 @@ The installer doesn't have a paid code-signing certificate yet, so Windows Smart
 <summary>The Vietnamese voice doesn't start, or reports that it is running with no sound</summary>
 
 - Open Settings → Voice and check the status line in the voice installation block at the top of the page. If it isn't installed yet, select Install voice; if a previous installation was interrupted by a network error, the status line shows the reason and you can select Retry to continue installing.
-- During the first 7 seconds after opening OverSub, or on the first run when downloading the model over a slow connection, the VieNeu voice is still loading so the app temporarily speaks with the Windows Vietnamese voice (if your PC has one) or shows text only. If loading takes longer than usual, the app waits up to 20 minutes and turns the voice on automatically when finished without needing a restart. You can select Preview under Settings → Voice to check.
+- During the first 7 seconds after opening OverSub, or on the first run when downloading the model over a slow connection, the VieNeu voice is still loading so the app temporarily speaks with the Windows Vietnamese voice (if your PC has one) or shows text only. If loading takes longer than usual, the app turns the voice on automatically when it finishes, without needing a restart. You can select Preview under Settings → Voice to check.
 - If the app reports that it is playing the voice but you hear nothing, Windows may have switched its default speaker to the capture card's audio port or a virtual speaker when you plugged in the capture card. Go to Settings → Voice → Voice output, choose your PC's speaker or the headphones you are wearing, and select Save.
 </details>
 
@@ -418,18 +416,21 @@ Go to Windows Settings → Apps → Installed apps, find OverSub and click Unins
 
 ## Feedback and bug reports
 
-The quickest way is to open Settings → General (which shows the version line `OverSub x.y.z`) and select Send a bug report…. The app creates a `.zip` package on your PC in `%LOCALAPPDATA%\OverSub\Reports` (keeping the 5 most recent packages, with logs, settings and PC information; no API keys, TV pairing data or translation memory) and opens a window with three buttons: Show the file, Open the issue page (opens a new GitHub Issue with your version and PC details prefilled) and Send by email (starts an email to `hillx.design@gmail.com`). The app never sends anything on its own; drag the `.zip` file onto the issue page or attach it to the email yourself. If an unexpected interface error occurs while running, OverSub keeps running and shows a notice once per session on the status line pointing to Send a bug report….
+The quickest way is to open Settings → General (which shows the version line `OverSub x.y.z`) and select Send a bug report…. The app creates a `.zip` package on your PC in `%LOCALAPPDATA%\OverSub\Reports` (keeping the 5 most recent packages, with logs, settings and PC information; no API keys, TV pairing data or translation memory) and opens a window with three buttons: Show the file, Open the issue page (opens a new GitHub Issue with your version and PC details prefilled) and Send by email (starts an email to `hillx.design@gmail.com`). The app never sends anything on its own; drag the `.zip` file onto the issue page or attach it to the email yourself.
 
 You can also open an [Issue](https://github.com/imhillxtz/oversub-windows/issues) on GitHub directly with your OverSub version, the Windows PC model you use, the game title and how you play, and attach the latest log file from `%LOCALAPPDATA%\OverSub\Logs` (open it quickly with the Open folder button under Settings → General → Diagnostic log). Please read through the log before sending it, as the log contains lines of text read from your game.
 
 ## Support
 
-OverSub is free for everyone. If you find the app useful, you can buy me a coffee at [paypal.me/ngochieuit](https://paypal.me/ngochieuit), or select Support in the main window (or Support in the Support OverSub card under Settings → General) to open the Support window right inside the app:
+OverSub is free for everyone. It was made so that anyone playing games can follow the story, even when the game isn't in their language. If you find it useful, you can buy me a coffee to support its development. Every contribution, large or small, helps fund bug fixes, support for more games and new features.
 
-- Vietnam · VietQR: pick 20,000₫, 50,000₫, 100,000₫ or enter any amount, then scan the QR code with a banking app, MoMo or ZaloPay (recipient `TRINH NGOC HIEU`, MoMo wallet, message `OverSub`). You can type your name into the name box so it is included in the transfer message.
-- International · PayPal: pick $3, $5, $10 or enter any amount, then select Open PayPal to open `paypal.me/ngochieuit`.
+<img src="Docs/images/donate-vietqr.png" width="180" align="right" alt="VietQR code to support OverSub">
 
-The Support window includes the I've already supported (stop reminders) checkbox. When your total translated lines pass 300, 1,000, 3,000 and 10,000, OverSub shows a thank-you note with a Support button when opening the app (once per milestone, never while you are playing; check I've already supported (stop reminders) to turn these reminders off completely). Starring this repository or recommending OverSub to a friend is another way to support it.
+- International: [paypal.me/ngochieuit](https://paypal.me/ngochieuit).
+- In Vietnam: scan the VietQR code with a banking app, MoMo or ZaloPay (recipient TRINH NGOC HIEU, MoMo wallet, message "OverSub").
+- Starring this repository or recommending OverSub to a friend is another way to help.
+
+<br clear="right">
 
 ## Other platforms
 
