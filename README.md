@@ -173,6 +173,7 @@ Giọng Việt dùng [VieNeu-TTS](https://github.com/pnnbao97/VieNeu-TTS) (giấ
 Ở tab Giọng đọc trong Cài đặt, bạn có thể chỉnh:
 
 - Bộ giọng VieNeu: Nano (nhanh, đọc sau khoảng 1,5 giây, mặc định) hoặc Turbo (tự nhiên hơn, chờ khoảng 2 đến 4 giây mỗi câu). Bộ Turbo cần tải thêm khoảng 0,6 GB bằng nút Tải bộ Turbo khi chọn Turbo ở ô Bộ giọng VieNeu (hoặc nút Tải bộ Nano nếu cần tải bộ Nano). Mỗi bộ có nhiều giọng nam và nữ để chọn ở mục Giọng, kèm nút Nghe thử. Nếu đổi giữa Nano và Turbo, vui lòng bấm Lưu để nạp bộ giọng mới rồi mở lại Cài đặt để nghe thử.
+- Khi chạy pin, đọc bằng giọng Windows (mặc định bật): khi rút sạc, OverSub đọc bằng giọng tiếng Việt của Windows và tắt VieNeu, vì VieNeu tốn nhiều CPU lúc sinh câu (đo trên ROG Ally, game tụt khoảng 4 đến 8% FPS khi thoại dày) và giữ khoảng 900 MB RAM. Cắm sạc lại thì app nạp lại VieNeu, giọng Windows đọc tạm trong vài giây chờ.
 - Loa phát giọng: mặc định để Tự chọn, app sẽ phát ra loa mặc định của Windows nhưng tự tránh cổng âm thanh của capture card và các loa ảo như Steam Streaming để không bị mất tiếng. Bạn cũng có thể chọn cố định một loa hoặc tai nghe trong danh sách.
 - Âm lượng giọng đọc: kéo từ 0% đến 200%.
 - Khi dịch sang ngôn ngữ khác tiếng Việt, OverSub tự chuyển sang giọng đọc có sẵn của Windows cho ngôn ngữ đó.

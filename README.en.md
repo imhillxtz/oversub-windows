@@ -173,6 +173,7 @@ The Vietnamese voice uses [VieNeu-TTS](https://github.com/pnnbao97/VieNeu-TTS) (
 On the Voice tab in Settings, you can adjust:
 
 - VieNeu model: Nano (fast, speaks after about 1.5 seconds, default) or Turbo (more natural, waits about 2 to 4 seconds per line). The Turbo model needs an extra 0.6 GB download via the Download Turbo button when Turbo is selected under VieNeu model (or Download Nano if the Nano model needs to be downloaded). Each model has several male and female voices to choose from under Voice, with a Preview button. If you switch between Nano and Turbo, please click Save to load the new model and reopen Settings to preview it.
+- On battery, read with the Windows voice (on by default): when you unplug, OverSub reads with the built-in Windows Vietnamese voice and turns VieNeu off, because VieNeu uses a lot of CPU to generate each line (measured on a ROG Ally, busy dialogue cost games about 4 to 8% of their FPS) and holds about 900 MB of RAM. When you plug back in, the app reloads VieNeu and the Windows voice reads during the few seconds that takes.
 - Voice output: set to Automatic by default, which plays through the default Windows speaker while skipping capture card audio ports and virtual speakers such as Steam Streaming so sound isn't lost. You can also pick a specific speaker or headset from the list.
 - Voice volume: slide from 0% to 200%.
 - When translating into a language other than Vietnamese, OverSub automatically switches to the built-in Windows voice for that language.
